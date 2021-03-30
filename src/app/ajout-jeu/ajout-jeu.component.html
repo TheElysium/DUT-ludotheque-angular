@@ -1,0 +1,127 @@
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+  <div class="p-formgroup-inline">
+    <div class="p-field">
+      <label for="nom" class="p-sr-only">Nom</label>
+      <input id="nom" type="text" pInputText placeholder="Nom" formControlName="nom">
+      <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="mat-error">
+        <div *ngIf="nom?.errors.required" style="color: crimson">Le nom est obligatoire</div>
+        <div *ngIf="nom?.errors.minlength"  style="color: crimson">Le nom doit comporter au moins 10 caractères</div>
+        <div *ngIf="nom?.errors.maxlength"  style="color: crimson">Le nom doit comporter moins 100 caractères</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-formgroup-inline">
+    <div class="p-field">
+      <label for="description" class="p-sr-only">Description</label>
+      <input id="description" type="text" pInputText placeholder="Description" formControlName="description">
+      <div *ngIf="description.invalid && (description.dirty || description.touched)" class="mat-error">
+        <div *ngIf="description?.errors.required" style="color: crimson">La description est obligatoire</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-formgroup-inline">
+    <div class="p-field">
+      <label for="theme" class="p-sr-only">Theme</label>
+      <input id="theme" type="text" pInputText placeholder="Theme" formControlName="theme">
+      <div *ngIf="theme.invalid && (theme.dirty || theme.touched)" class="mat-error">
+        <div *ngIf="theme?.errors.required" style="color: crimson">Le theme est obligatoire</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-formgroup-inline">
+    <div class="p-field">
+      <label for="editeur" class="p-sr-only">Editeur</label>
+      <input id="editeur" type="text" pInputText placeholder="Editeur" formControlName="editeur">
+      <div *ngIf="editeur.invalid && (editeur.dirty || editeur.touched)" class="mat-error">
+        <div *ngIf="editeur?.errors.required" style="color: crimson">L'editeur est obligatoire</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-formgroup-inline">
+    <div class="p-field">
+      <label for="mecanique" class="p-sr-only">Mecanique</label>
+      <input id="mecanique" type="text" pInputText placeholder="Mecanique" formControlName="mecanique">
+      <div *ngIf="mecanique.invalid && (mecanique.dirty || mecanique.touched)" class="mat-error">
+        <div *ngIf="mecanique?.errors.required" style="color: crimson">La mecanique est obligatoire</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-formgroup-inline">
+    <div class="p-field">
+      <label for="url_media" class="p-sr-only">Url_media</label>
+      <input id="url_media" type="text" pInputText placeholder="Url_media" formControlName="url_media">
+    </div>
+  </div>
+  <div class="p-formgroup-inline">
+    <div class="p-field">
+      <label for="categorie" class="p-sr-only">Categorie</label>
+      <input id="categorie" type="text" pInputText placeholder="Categorie" formControlName="categorie">
+      <div *ngIf="categorie.invalid && (categorie.dirty || categorie.touched)" class="mat-error">
+        <div *ngIf="categorie?.errors.required" style="color: crimson">La categorie est obligatoire</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-formgroup-inline">
+    <div class="p-field">
+      <label for="regle" class="p-sr-only">Regle</label>
+      <input id="regle" type="text" pInputText placeholder="Regle" formControlName="regle">
+      <div *ngIf="regle.invalid && (regle.dirty || regle.touched)" class="mat-error">
+        <div *ngIf="regle?.errors.required" style="color: crimson">La regle est obligatoire</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-formgroup-inline">
+    <div class="p-field">
+      <label for="langue" class="p-sr-only">Langue</label>
+      <input id="langue" type="text" pInputText placeholder="Langue" formControlName="langue">
+      <div *ngIf="langue.invalid && (langue.dirty || langue.touched)" class="mat-error">
+        <div *ngIf="langue?.errors.required" style="color: crimson">La langue est obligatoire</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-formgroup-inline">
+    <div class="p-field">
+      <label for="nombre_de_joueurs" class="p-sr-only">Nombre de joueurs</label>
+      <input id="nombre_de_joueurs" type="text" pInputText placeholder="Nombre de joueurs" formControlName="nombre_de_joueurs">
+      <div *ngIf="nombre_de_joueurs.invalid && (nombre_de_joueurs.dirty || nombre_de_joueurs.touched)" class="mat-error">
+        <div *ngIf="nombre_de_joueurs?.errors.required" style="color: crimson">Le nombre de joueurs est obligatoire</div>
+        <div *ngIf="nombre_de_joueurs?.errors.pattern"  style="color: crimson">le nombre de joueurs doit etre compris 2 en 8</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-formgroup-inline">
+    <div class="p-field">
+      <label for="age_minimum" class="p-sr-only">Age minimum</label>
+      <input id="age_minimum" type="text" pInputText placeholder="Age minimum" formControlName="age_minimum">
+      <div *ngIf="age_minimum.invalid && (age_minimum.dirty || age_minimum.touched)" class="mat-error">
+        <div *ngIf="age_minimum?.errors.required" style="color: crimson">L'age minimum est obligatoire</div>
+        <div *ngIf="age_minimum?.errors.pattern"  style="color: crimson">l'age minimum doit etre compris entre 1 et 16</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-formgroup-inline">
+    <div class="p-field">
+      <label for="poids" class="p-sr-only">Poids</label>
+      <input id="poids" type="text" pInputText placeholder="Poids" formControlName="poids">
+      <div *ngIf="poids.invalid && (poids.dirty || poids.touched)" class="mat-error">
+        <div *ngIf="poids?.errors.required" style="color: crimson">Le poids est obligatoire</div>
+        <div *ngIf="poids?.errors.pattern"  style="color: crimson">le poids doit etre compris entre 0.100 Kg et 5.00</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-formgroup-inline">
+    <div class="p-field">
+      <label for="duree" class="p-sr-only">Duree</label>
+      <input id="duree" type="text" pInputText placeholder="Duree" formControlName="duree">
+      <div *ngIf="duree.invalid && (duree.dirty || duree.touched)" class="mat-error">
+        <div *ngIf="duree?.errors.required" style="color: crimson">La duree est obligatoire</div>
+      </div>
+    </div>
+  </div>
+  <button pButton type="submit" label="Valide" [disabled]="!formulaire.valid">valider</button>
+</form>
+
+<div>
+  valeur saisie : {{formulaire.value | json}}
+</div>
+
