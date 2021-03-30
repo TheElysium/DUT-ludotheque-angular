@@ -11,6 +11,18 @@
       <input type="number" id="nombreJoueurs" formControlName="nombreJoueurs" aria-describedby="nombreJoueurs-help" pInputTextarea>
       <small *ngIf="nombreJoueurs.invalid && nombreJoueurs.touched"  id="nombreJoueurs-help" class="p-error">Superieur à 0</small>
     </div>
+    <div>
+      <label for="editor">Editeur</label>
+      <select id="editor" name="editor">
+        <option *ngFor="let editor of editors" value="{{editor.id}}">{{editor.nom}}</option>
+      </select>
+    </div>
+    <div>
+      <label for="theme">Thème</label>
+      <select id="theme" name="theme">
+        <option *ngFor="let theme of themes" value="{{theme.id}}">{{theme.nom}}</option>
+      </select>
+    </div>
     <button type="submit" label="Filtrer" [disabled]="!filterForm.valid">Filtrer</button>
   </form>
 </div>

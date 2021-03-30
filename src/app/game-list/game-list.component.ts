@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {GameService} from "../game.service";
 import {Game, Sort} from "../game";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {EditorService} from "../editor.service";
+import {ThemeService} from "../theme.service";
+import {Editor} from "../editor";
+import {Theme} from "../theme";
 
 @Component({
   selector: 'app-game-list',
@@ -12,7 +16,10 @@ export class GameListComponent implements OnInit {
 
   gameList: Game[];
   sortState: number;
+  editors: Editor[];
+  themes: Editor[];
   filterList;
+
 
   filterForm: FormGroup = new FormGroup({
     age: new FormControl(undefined, [Validators.min(0)]),
@@ -22,18 +29,32 @@ export class GameListComponent implements OnInit {
   });
 
 
-  constructor(public gameService: GameService) { }
+  constructor(public gameService: GameService, public editorService: EditorService, public themeService: ThemeService) { }
 
   ngOnInit(): void {
     this.getGameList();
+    this.getThemes();
+    this.getEditors();
     this.sortState = 0;
     this.filterList = [];
+    console.log(this.editors);
+
   }
 
   getGameList(sort?: string, filter?: string[]): void{
     this.gameService.getGameList(sort, filter).subscribe(
       (gameList: Game[]) => this.gameList = gameList
     );
+  }
+
+  getEditors(): void{
+    this.editorService.getEditors().subscribe(
+      (editors: Editor[]) => this.editors = editors)
+  };
+
+  getThemes(): void{
+    this.themeService.getThemes().subscribe(
+      (themes: Theme[]) => this.themes = themes)
   }
 
   filter(): void{
@@ -76,9 +97,11 @@ export class GameListComponent implements OnInit {
     return this.filterForm.get('theme');
   }
 
-  get editeur(){
-    return this.filterForm.get('editeurs');
+  get editor(){
+    return this.filterForm.get('editor');
   }
+
+
 
 
 }

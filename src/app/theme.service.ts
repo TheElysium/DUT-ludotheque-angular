@@ -13,7 +13,7 @@ export class ThemeService {
 
   getThemes(): Observable<Theme[]>{
     const url: string = 'http://localhost:8000/api/themes';
-
+    console.log("Retreiving themes ...");
     return this.http.get<any>(url, {headers: new HttpHeaders({'Content-Type': 'application/json'})})
       .pipe(
         map(res => res.data.item),
