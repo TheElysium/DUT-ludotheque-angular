@@ -34,6 +34,7 @@ import { FormUserComponent } from './form-user/form-user.component';
 import {Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
+
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -61,7 +62,7 @@ registerLocaleData(localeFr, 'fr');
     ToastModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
