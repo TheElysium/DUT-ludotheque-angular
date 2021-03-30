@@ -20,7 +20,6 @@ import { ProfileComponent } from './profile/profile.component';
 import {UserService} from './_services/user.service';
 import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
 import {MarkdownModule} from 'ngx-markdown';
-import { RegisterComponent } from './register/index';
 import { FormsModule } from '@angular/forms';
 import { AlertService } from './_services/index';
 import {FormUserComponent} from './form-user/form-user.component';
@@ -31,7 +30,6 @@ import {FormUserComponent} from './form-user/form-user.component';
     LoginComponent,
     ProfileComponent,
     LpSolverTestComponent,
-    RegisterComponent,
     FormUserComponent
   ],
   imports: [

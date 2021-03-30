@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
   error = '';
 
   formulaire = new FormGroup({
-    email: new FormControl('robert.duchmol@domain.fr', [Validators.required]),
-    password: new FormControl('secret00', [Validators.required])
+    email: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
   });
 
   constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
@@ -30,6 +30,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // get return url from route parameters or default to '/'
+    this.formulaire = new FormGroup({
+      email: new FormControl(this.route.snapshot.queryParamMap.get('email'), [Validators.required]),
+      password: new FormControl('', [Validators.required])
+    })
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 
