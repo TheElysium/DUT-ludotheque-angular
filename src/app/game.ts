@@ -26,14 +26,14 @@
 
 export enum Filter{
   NONE,
-  NOMBRE_JOUEURS,
-  AGE,
-  EDITEUR,
-  THEME,
+  user,
+  age,
+  editeur,
+  theme,
 }
 
 export enum Sort{
   NONE,
-  NOTE,
-  NOM,
+  note,
+  nom,
 }

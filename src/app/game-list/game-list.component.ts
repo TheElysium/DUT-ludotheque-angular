@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
   templateUrl: './game-list.component.html',
   styleUrls: ['./game-list.component.css']
 })
-export class LandingPageComponent implements OnInit {
+export class GameListComponent implements OnInit {
 
   gameList: Game[];
   constructor(public gameService: GameService) { }

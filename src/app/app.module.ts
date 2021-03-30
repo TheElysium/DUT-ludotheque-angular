@@ -22,7 +22,9 @@ import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component
 import {MarkdownModule} from 'ngx-markdown';
 import { ErrorMessageComponent } from './error-message/error-message.component';
 
-import {GameService} from './game.service';
+import { GameListComponent } from './game-list/game-list.component';
+import {GameService} from "./game.service";
+import { GameCardComponent } from './game-card/game-card.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { GameDetailsComponent } from './game-details/game-details.component';
@@ -37,9 +39,9 @@ registerLocaleData(localeFr, 'fr');
     ProfileComponent,
     LpSolverTestComponent,
     ErrorMessageComponent,
+    GameCardComponent,
     PageNotFoundComponent,
-    GameDetailsComponent,
-    LandingPageComponent,
+    GameListComponent
 
   ],
   imports: [
