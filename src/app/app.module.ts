@@ -28,7 +28,6 @@ import { GameCardComponent } from './game-card/game-card.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { GameDetailsComponent } from './game-details/game-details.component';
-import {LandingPageComponent} from "./game-list/landing-page.component";
 
 registerLocaleData(localeFr, 'fr');
 
