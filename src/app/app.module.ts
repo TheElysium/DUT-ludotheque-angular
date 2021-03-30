@@ -37,7 +37,8 @@ registerLocaleData(localeFr, 'fr');
     LpSolverTestComponent,
     ErrorMessageComponent,
     GameCardComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    GameListComponent
 
   ],
   imports: [
