@@ -20,7 +20,6 @@ import { ProfileComponent } from './profile/profile.component';
 import {UserService} from './_services/user.service';
 import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
 import {MarkdownModule} from 'ngx-markdown';
-import { FormsModule } from '@angular/forms';
 import { AlertService } from './_services/index';
 import { ErrorMessageComponent } from './error-message/error-message.component';
 
@@ -33,6 +32,7 @@ import { GameDetailsComponent } from './game-details/game-details.component';
 import { AjoutJeuComponent } from './ajout-jeu/ajout-jeu.component';
 import { FormUserComponent } from './form-user/form-user.component';
 import {Routes} from '@angular/router';
+
 
 registerLocaleData(localeFr, 'fr');
 
@@ -60,7 +60,7 @@ registerLocaleData(localeFr, 'fr');
     ToastModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},

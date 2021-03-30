@@ -2,10 +2,11 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable, throwError} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {MessageService} from 'primeng/api';
 import {MesValidateurs} from '../MesValidateurs';
+import {ERROR} from "@angular/compiler-cli/src/ngtsc/logging/src/console_logger";
 
 @Component({
   selector: 'app-form-user',
@@ -62,12 +63,12 @@ export class FormUserComponent implements OnInit {
     prenom: new FormControl(undefined, [Validators.required, Validators.minLength(3)]),
     nom: new FormControl(undefined, [Validators.required]),
     pseudo: new FormControl(undefined, [Validators.required]),
+      email: new FormControl(undefined, [Validators.required, Validators.email]),
     pwd: new FormGroup({
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       confirmPassword: new FormControl('', [Validators.required]),
     // @ts-ignore
-    }, [MesValidateurs.mustMatch]),
-    email: new FormControl(undefined, [Validators.required, Validators.email]),
+    }, [MesValidateurs.mustMatch])
   },
   );
 
@@ -79,6 +80,7 @@ export class FormUserComponent implements OnInit {
     if (this.formulaire.valid){
       console.log(this.form.prenom, this.form.nom);
       console.log('register() function');
+      // tslint:disable-next-line:max-line-length
       const registeredUser: Observable<any> = this.register(this.form.prenom, this.form.nom, this.form.pseudo, this.form.email, this.form.pwd.password);
       registeredUser.subscribe(value => {
         console.log('Registered : ' + value);
@@ -88,12 +90,12 @@ export class FormUserComponent implements OnInit {
   }
 
   register(prenom: string, nom: string, pseudo: string, email: string, password: string): Observable<any>{
+    // tslint:disable-next-line:max-line-length
     return this.http.post<any>(`${environment.apiUrl}/auth/register`, {prenom, nom, pseudo, email, password}, FormUserComponent.httpOptions);
   }
 
   registered(): any{
     // @ts-ignore
-    this.messageService.add({severity: 'info', summary: 'Enregistrement', detail: `Bienvenue, ${pseudo}`, key: 'main'});
     this.router.navigate(['/login'], { queryParams: { email: this.form.email } } );
   }
 }
