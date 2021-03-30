@@ -28,6 +28,8 @@ import { GameCardComponent } from './game-card/game-card.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { GameDetailsComponent } from './game-details/game-details.component';
+import { AjoutJeuComponent } from './ajout-jeu/ajout-jeu.component';
+import {Routes} from "@angular/router";
 
 registerLocaleData(localeFr, 'fr');
 
@@ -40,8 +42,8 @@ registerLocaleData(localeFr, 'fr');
     ErrorMessageComponent,
     GameCardComponent,
     PageNotFoundComponent,
-    GameListComponent
-
+    GameListComponent,
+    AjoutJeuComponent
   ],
   imports: [
     BrowserModule,
