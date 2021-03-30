@@ -23,7 +23,7 @@ export class GameService {
       console.log(sort);
     }
     if(filter != undefined){
-      filter.forEach(couple => searchParams = searchParams.append(couple[0], couple[1]))
+      if(filter.length != 0) filter.forEach(couple => searchParams = searchParams.append(couple[0], couple[1]))
     }
 
 
