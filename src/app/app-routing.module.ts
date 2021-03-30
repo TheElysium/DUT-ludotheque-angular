@@ -12,7 +12,6 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'ro', component: LpSolverTestComponent},
-  { path: 'register', component: FormUserComponent }
   { path: 'register', component: FormUserComponent },
   {path: 'add-game', component: AjoutJeuComponent},
   {path: '**', component: PageNotFoundComponent},

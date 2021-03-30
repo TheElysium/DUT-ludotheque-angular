@@ -20,7 +20,6 @@ import { ProfileComponent } from './profile/profile.component';
 import {UserService} from './_services/user.service';
 import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
 import {MarkdownModule} from 'ngx-markdown';
-import { FormsModule } from '@angular/forms';
 import { AlertService } from './_services/index';
 import { ErrorMessageComponent } from './error-message/error-message.component';
 
