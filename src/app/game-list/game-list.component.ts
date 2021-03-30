@@ -27,14 +27,15 @@ export class GameListComponent implements OnInit {
     this.getGameList();
   }
 
-  getGameList(sort?: Sort, filter?: Filter, filterParam?: string): void{
-    this.gameService.getGameList(sort, filter, filterParam).subscribe(
+  getGameList(sort?: Sort, filter?: string[]): void{
+    this.gameService.getGameList(sort, filter).subscribe(
       (gameList: Game[]) => this.gameList = gameList
     )
   }
 
   filter(): void{
-    
+    let filterList = []
+    if(this.age.value != null){filterList.push(["age", this.age.value])}
   }
 
   get age(){

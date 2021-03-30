@@ -13,15 +13,15 @@ export class GameService {
 
   constructor(private http: HttpClient) { }
 
-  getGameList(sort?: Sort, filter? : Filter, filterParam?: string): Observable<Game[]>{
+  getGameList(sort?: Sort, filter? : string[]): Observable<Game[]>{
     const url: string = 'http://localhost:8000/api/jeux';
 
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
 
     let searchParams = new HttpParams();
     if(sort != undefined) searchParams.set("sort", sort.toString());
-    if(filter != undefined) searchParams.set(filter.toString(), filterParam);
+    if(filter != undefined){
+      filter.forEach(couple => searchParams.set(couple[0], couple[1]))
+    }
 
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'}),
