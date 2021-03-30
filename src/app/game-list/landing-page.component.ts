@@ -4,9 +4,9 @@ import {Game} from "../game";
 import {Observable} from "rxjs";
 
 @Component({
-  selector: 'app-landing-page',
-  templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.css']
+  selector: 'app-game-list',
+  templateUrl: './game-list.component.html',
+  styleUrls: ['./game-list.component.css']
 })
 export class LandingPageComponent implements OnInit {
 

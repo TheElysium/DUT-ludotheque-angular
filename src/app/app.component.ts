@@ -24,6 +24,8 @@ constructor(public messageService: MessageService, public authService: Authentif
   // }
   //
 
+
+
   logout(): void {
     this.authService.logout();
   }

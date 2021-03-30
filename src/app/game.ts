@@ -18,3 +18,17 @@ export class Game{
     );
   }
 }
+
+export enum Filter{
+  NONE,
+  NOMBRE_JOUEURS,
+  AGE,
+  EDITEUR,
+  THEME,
+}
+
+export enum Sort{
+  NONE,
+  NOTE,
+  NOM,
+}
