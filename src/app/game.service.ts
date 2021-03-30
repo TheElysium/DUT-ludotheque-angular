@@ -16,10 +16,10 @@ export class GameService {
   getGameList(sort?: string, filter? : string[]): Observable<Game[]>{
     const url: string = 'http://localhost:8000/api/jeux';
 
-
     let searchParams = new HttpParams();
+
     if(sort != undefined) {
-      searchParams = searchParams.set("sort", sort);
+      searchParams = searchParams.append("sort", sort);
       console.log(sort);
     }
     if(filter != undefined){
@@ -78,4 +78,5 @@ export class GameService {
       });
     });
   }
+
 }
