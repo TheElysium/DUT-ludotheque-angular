@@ -1,10 +1,11 @@
 export class Game{
 
-  constructor(public nom: string,public  description: string,public  regles: string,public  langue: string, public url_media: string, public  age: number,public  poids: number,public  nombreJoueurs: number, public categorie: string, public duree: string) {}
+  constructor(public id: number, public nom: string,public  description: string,public  regles: string,public  langue: string, public url_media: string, public  age: number,public  poids: number,public  nombreJoueurs: number, public categorie: string, public duree: string) {}
 
   //Create game from JSON
   public static fromJson(json: Object): Game{
     return new Game(
+      json['id'],
       json['nom'],
       json['description'],
       json['regles'],
@@ -21,14 +22,14 @@ export class Game{
 
 export enum Filter{
   NONE,
-  NOMBRE_JOUEURS,
-  AGE,
-  EDITEUR,
-  THEME,
+  user,
+  age,
+  editeur,
+  theme,
 }
 
 export enum Sort{
   NONE,
-  NOTE,
-  NOM,
+  note,
+  nom,
 }
