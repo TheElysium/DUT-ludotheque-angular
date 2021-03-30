@@ -23,6 +23,7 @@ import {MarkdownModule} from 'ngx-markdown';
 import { ErrorMessageComponent } from './error-message/error-message.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import {GameService} from "./game.service";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -33,7 +34,8 @@ registerLocaleData(localeFr, 'fr');
     ProfileComponent,
     LpSolverTestComponent,
     ErrorMessageComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
