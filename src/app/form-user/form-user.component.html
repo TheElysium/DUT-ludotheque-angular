@@ -20,6 +20,11 @@
       <input id="email" type="text" pInputText placeholder="email" aria-describedby="email-help" formControlName="email">
       <small *ngIf="email.invalid && email.touched"  id="email-help" class="p-error">L'email est obligatoire.</small>
     </div>
+    <div class="p-field">
+      <label for="pseudo">Password</label>
+      <input type="password" formControlName="password">
+      <small *ngIf="password.invalid && password.touched"  id="dd-help" class="p-error">Le mot de passe est obligatoire.</small>
+    </div>
     <button pButton type="submit" >Submit</button>
   </div>
 </form>

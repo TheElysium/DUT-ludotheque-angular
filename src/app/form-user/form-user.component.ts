@@ -1,10 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {User} from '../_models/user';
-
-interface Natures {
-  nom: string;
-}
+import {Observable, throwError} from 'rxjs';
+import {environment} from '../../environments/environment';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-form-user',
@@ -12,33 +11,12 @@ interface Natures {
   styleUrls: ['./form-user.component.css']
 })
 export class FormUserComponent implements OnInit {
-  titre: string;
 
-  @Input() user: User;
-  @Output() updatedUser: EventEmitter<User>;
+  static httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
-  formulaire: FormGroup = new FormGroup({
-    prenom: new FormControl(undefined, [Validators.required, Validators.minLength(3)]),
-    nom: new FormControl(undefined, [Validators.required]),
-    pseudo: new FormControl(undefined, [Validators.required]),
-    password: new FormControl(undefined, [Validators.required]),
-    email: new FormControl(undefined, [Validators.required, Validators.email]),
-  });
-
-  constructor() {
-    this.updatedUser = new EventEmitter<User>();
-  }
-
-  ngOnInit(): void {
-    if (this.user.id !== undefined) {
-      this.fillForm();
-    }
-    if (this.user.id === undefined) {
-      this.titre = 'Creation User';
-    } else {
-      this.titre = 'Modification User';
-      this.fillForm();
-    }
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   get nom(): AbstractControl {
@@ -57,18 +35,51 @@ export class FormUserComponent implements OnInit {
     return this.formulaire.get('email');
   }
 
-  fillForm(): void {
-    this.formulaire.patchValue({
-      nom: this.user.nom,
-      prenom: this.user.prenom,
-      pseudo: this.user.pseudo,
-      email: this.user.email,
-    });
+  get password(): AbstractControl{
+    return this.formulaire.get('password');
+  }
+
+  titre: string;
+
+  form: any = {
+    prenom: null,
+    nom: null,
+    pseudo: null,
+    password: null,
+    email: null
+  };
+
+  formulaire: FormGroup = new FormGroup({
+    prenom: new FormControl(undefined, [Validators.required, Validators.minLength(3)]),
+    nom: new FormControl(undefined, [Validators.required]),
+    pseudo: new FormControl(undefined, [Validators.required]),
+    password: new FormControl(undefined, [Validators.required]),
+    email: new FormControl(undefined, [Validators.required, Validators.email]),
+  });
+
+  ngOnInit(): void {
   }
 
   onSubmit(): void {
-    this.user = { ...this.user, ...this.formulaire.value};
-    console.log('après modification : ', this.user);
-    this.updatedUser.emit(this.user);
+    this.form = {...this.form, ...this.formulaire.value};
+    if (this.formulaire.valid){
+      console.log(this.form.prenom, this.form.nom);
+      console.log('register() function');
+      const registeredUser: Observable<any> = this.register(this.form.prenom, this.form.nom, this.form.pseudo, this.form.email, this.form.password);
+      registeredUser.subscribe(value => {
+        console.log('Registered : ' + value);
+        this.registered(value);
+      });
+    }
+  }
+
+
+
+  register(prenom: string, nom: string, pseudo: string, email: string, password: string): Observable<any>{
+    return this.http.post<any>(`${environment.apiUrl}/auth/register`, {prenom, nom, pseudo, email, password}, FormUserComponent.httpOptions);
+  }
+
+  registered(response): any{
+    this.router.navigate(['/login']);
   }
 }
