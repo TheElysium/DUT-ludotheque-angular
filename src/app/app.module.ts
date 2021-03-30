@@ -20,31 +20,38 @@ import { ProfileComponent } from './profile/profile.component';
 import {UserService} from './_services/user.service';
 import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
 import {MarkdownModule} from 'ngx-markdown';
-
-registerLocaleData(localeFr, 'fr');
+import { RegisterComponent } from './register/index';
+import { FormsModule } from '@angular/forms';
+import { AlertService } from './_services/index';
+import {FormUserComponent} from './form-user/form-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    LpSolverTestComponent
+    LpSolverTestComponent,
+    RegisterComponent,
+    FormUserComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MarkdownModule.forRoot(),
     AppRoutingModule,
+    FormsModule,
     MomentModule,
     MessagesModule,
     ToastModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
-    UserService
+    UserService,
+    AlertService,
+    AuthentificationService,
   ],
   bootstrap: [AppComponent]
 })

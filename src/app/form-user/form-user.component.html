@@ -1,0 +1,28 @@
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+    <div class="p-fluid forms-grid" style="margin: 1em 0">
+    <div class="p-field">
+      <label for="nom">Nom</label>
+      <textarea  id="nom" rows="1" cols="20" autoResize="autoResize" aria-describedby="nom-help" formControlName="nom" pInputTextarea></textarea>
+      <small *ngIf="nom.invalid && nom.touched"  id="nom-help" class="p-error">Le nom est obligatoire.</small>
+    </div>
+    <div class="p-field">
+      <label for="prenom">Prenom</label>
+      <textarea  id="prenom" rows="1" cols="20" autoResize="autoResize" aria-describedby="prenom-help" formControlName="prenom" pInputTextarea></textarea>
+      <small *ngIf="prenom.invalid && prenom.touched"  id="libelle-help" class="p-error">Le nom est obligatoire.</small>
+    </div>
+    <div class="p-field">
+      <label for="pseudo">Pseudo</label>
+      <textarea  id="pseudo" rows="1" cols="20" autoResize="autoResize" aria-describedby="pseudo-help" formControlName="pseudo" pInputTextarea></textarea>
+      <small *ngIf="pseudo.invalid && pseudo.touched"  id="dd-help" class="p-error">Le pseudo est obligatoire.</small>
+    </div>
+    <div class="p-field">
+      <label for="email">Email</label>
+      <input id="email" type="text" pInputText placeholder="email" aria-describedby="email-help" formControlName="email">
+      <small *ngIf="email.invalid && email.touched"  id="email-help" class="p-error">L'email est obligatoire.</small>
+    </div>
+    <button pButton type="submit" >Submit</button>
+  </div>
+</form>
+  <ng-template pTemplate="footer">
+    Saisir les informations d'un utilisateur
+  </ng-template>

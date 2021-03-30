@@ -3,7 +3,8 @@ import {Observable, of, throwError} from 'rxjs';
 import {UserInfo} from '../_models/user-info';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {catchError, map} from 'rxjs/operators';
+import {catchError, map, tap} from 'rxjs/operators';
+import {User} from '../_models/user';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -13,7 +14,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UserService {
-
   constructor(private http: HttpClient) {
   }
 
@@ -22,6 +22,23 @@ export class UserService {
       .pipe(
         map(rep => rep.data.item),
         catchError(err => throwError(err))
+      );
+  }
+  createUser(user: User): Observable<User> {
+    const url = `${environment.apiUrl + '/auth/register'}/user`;
+    console.log(url);
+    // tslint:disable-next-line:no-shadowed-variable
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+    return this.http.post<any>(url, user, httpOptions)
+      .pipe(
+        map(res => res.data.item),
+        tap(body => console.log(body)),
+        catchError(err => {
+          console.log('Erreur http : ', err);
+          return of(undefined);
+        })
       );
   }
 }
