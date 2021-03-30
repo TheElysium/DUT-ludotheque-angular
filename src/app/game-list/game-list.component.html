@@ -1,3 +1,25 @@
+<div>
+  <p>Filtrer</p>
+  <form [formGroup]="filterForm" (ngSubmit)="filter()">
+    <div>
+      <label for="age">Age</label>
+      <input type="number" id="age" formControlName="age" aria-describedby="age-help" pInputTextarea>
+      <small *ngIf="age.invalid && age.touched"  id="age-help" class="p-error">Superieur à 0</small>
+    </div>
+    <div>
+      <label for="nombreJoueurs">Nombre de joueurs</label>
+      <input type="number" id="nombreJoueurs" formControlName="nombreJoueurs" aria-describedby="nombreJoueurs-help" pInputTextarea>
+      <small *ngIf="nombreJoueurs.invalid && nombreJoueurs.touched"  id="nombreJoueurs-help" class="p-error">Superieur à 0</small>
+    </div>
+    <button type="submit" label="Filtrer" [disabled]="!filterForm.valid">Filtrer</button>
+  </form>
+</div>
+
+<div>
+  <button (click)="sort()">Sort</button>
+
+</div>
+
 <ul>
   <li *ngFor="let game of gameList">
     <app-game-card [game]="game"></app-game-card>
