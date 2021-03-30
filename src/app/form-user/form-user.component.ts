@@ -95,7 +95,7 @@ export class FormUserComponent implements OnInit {
   }
 
   registered(): any{
-    // @ts-ignore
+    this.messageService.add({severity: 'info', summary: 'Enregistrement', detail: `Bienvenue, ${this.pseudo}`, key: 'main'});
     this.router.navigate(['/login'], { queryParams: { email: this.form.email } } );
   }
 }

@@ -12,21 +12,33 @@
 
 
 <header>
-  <h3>Nom du site</h3>
-  <div *ngIf="authService.isLoggedIn$ | async;then logged; else notLogged">
-  </div>
+  <h3><a [routerLink]="['/home']">Nom du site</a></h3>
+  <ul>
+    <div *ngIf="authService.isLoggedIn$ | async;then logged; else notLogged">
+    </div>
 
-  <ng-template #logged>
-    <a [routerLink]="['/profile']">Profil</a>
-    <a [routerLink]="['/add-game']">Ajouter jeu</a>
-  </ng-template>
+    <ng-template #logged>
+      <li>
+        <a [routerLink]="['/profile']">Profil</a>
+      </li>
+      <li>
+        <a [routerLink]="['/add-game']">Ajouter jeu</a>
+      </li>
+    </ng-template>
 
-  <ng-template #notLogged>
-    <a [routerLink]="['/login']">Login</a>
-    <a [routerLink]="['/register']">Register</a>
-  </ng-template>
+    <ng-template #notLogged>
+      <li>
+        <a [routerLink]="['/login']">Connexion</a>
+      </li>
+      <li>
+        <a [routerLink]="['/register']">Inscription</a>
+      </li>
+    </ng-template>
+    <li>
+      <a [routerLink]="['/games']">Jeux</a>
+    </li>
+  </ul>
+
   <router-outlet>
   </router-outlet>
-
-  <app-game-list></app-game-list>
 </header>

@@ -32,6 +32,7 @@ import { GameDetailsComponent } from './game-details/game-details.component';
 import { AjoutJeuComponent } from './ajout-jeu/ajout-jeu.component';
 import { FormUserComponent } from './form-user/form-user.component';
 import {Routes} from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -47,7 +48,8 @@ registerLocaleData(localeFr, 'fr');
     PageNotFoundComponent,
     GameListComponent,
     AjoutJeuComponent,
-    FormUserComponent
+    FormUserComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

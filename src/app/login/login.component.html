@@ -1,8 +1,12 @@
 <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
   <div>
     Email :<input type="email" name="email" formControlName="email"><br>
-    <ng-container *ngIf="email.errors?.email || email.errors?.required">
+    <ng-container *ngIf="email.errors?.email">
       <app-error-message [message]="'Email invalide !'"></app-error-message>
+    </ng-container>
+
+    <ng-container *ngIf="email.errors?.required">
+      <app-error-message [message]="'Email requise !'"></app-error-message>
     </ng-container>
 
     Mot de passe : <input type="password" formControlName="password"><br>
