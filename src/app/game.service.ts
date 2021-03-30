@@ -3,6 +3,7 @@ import {Observable, of} from "rxjs";
 import {Game} from "./game";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, map} from "rxjs/operators";
+import {Sort, Filter} from "./game"
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class GameService {
 
   constructor(private http: HttpClient) { }
 
-  getGameList(): Observable<Game[]>{
+  getGameList(sort?: Sort, filter? : Filter, filterParam?: string): Observable<Game[]>{
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };

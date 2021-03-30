@@ -21,8 +21,9 @@ import {UserService} from './_services/user.service';
 import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
 import {MarkdownModule} from 'ngx-markdown';
 import { ErrorMessageComponent } from './error-message/error-message.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LandingPageComponent } from './game-list/landing-page.component';
 import {GameService} from "./game.service";
+import { GameCardComponent } from './game-card/game-card.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -33,7 +34,8 @@ registerLocaleData(localeFr, 'fr');
     ProfileComponent,
     LpSolverTestComponent,
     ErrorMessageComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    GameCardComponent
   ],
   imports: [
     BrowserModule,
