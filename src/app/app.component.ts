@@ -14,16 +14,23 @@ export class AppComponent {
 constructor(public messageService: MessageService, public authService: AuthentificationService) {
 }
 
-  show(): void {
-    const now = moment().format('LL');
-    this.messageService.add({
-      key: 'main',
-      severity: 'info',
-      detail: `${this.title}, ${now}`,
-    });
-  }
+  // show(): void {
+  //   const now = moment().format('LL');
+  //   this.messageService.add({
+  //     key: 'main',
+  //     severity: 'info',
+  //     detail: `${this.title}, ${now}`,
+  //   });
+  // }
+  //
+
+
 
   logout(): void {
     this.authService.logout();
   }
+
+
+
+
 }

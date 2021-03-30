@@ -6,7 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthentificationService} from './_services/authentification.service';
 import {MessagesModule} from 'primeng/messages';
 import {ToastModule} from 'primeng/toast';
@@ -20,10 +20,20 @@ import { ProfileComponent } from './profile/profile.component';
 import {UserService} from './_services/user.service';
 import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
 import {MarkdownModule} from 'ngx-markdown';
-import { RegisterComponent } from './register/index';
-import { FormsModule } from '@angular/forms';
 import { AlertService } from './_services/index';
 import {FormUserComponent} from './form-user/form-user.component';
+import { ErrorMessageComponent } from './error-message/error-message.component';
+
+import { GameListComponent } from './game-list/game-list.component';
+import {GameService} from './game.service';
+import { GameCardComponent } from './game-card/game-card.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+import { GameDetailsComponent } from './game-details/game-details.component';
+import { AjoutJeuComponent } from './ajout-jeu/ajout-jeu.component';
+import {Routes} from '@angular/router';
+
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
@@ -31,8 +41,11 @@ import {FormUserComponent} from './form-user/form-user.component';
     LoginComponent,
     ProfileComponent,
     LpSolverTestComponent,
-    RegisterComponent,
-    FormUserComponent
+    ErrorMessageComponent,
+    GameCardComponent,
+    PageNotFoundComponent,
+    GameListComponent,
+    AjoutJeuComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +58,7 @@ import {FormUserComponent} from './form-user/form-user.component';
     ToastModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
@@ -52,6 +66,7 @@ import {FormUserComponent} from './form-user/form-user.component';
     UserService,
     AlertService,
     AuthentificationService,
+    GameService,
   ],
   bootstrap: [AppComponent]
 })
