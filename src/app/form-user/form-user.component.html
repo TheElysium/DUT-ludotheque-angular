@@ -43,8 +43,11 @@
         <ng-container *ngIf="password.errors?.required">
           <app-error-message [message]="'Le mot de passe est obligatoire'"></app-error-message>
         </ng-container>
+        <ng-container *ngIf="password.errors?.pattern">
+          <app-error-message [message]="'Le mot de passe doit contenir au moins un caractère majuscule et un chiffre'"></app-error-message>
+        </ng-container>
         <ng-container *ngIf="password.errors?.minlength">
-          <app-error-message [message]="'Le mot de passe doit contenir au moins 6 caractères'"></app-error-message>
+          <app-error-message [message]="'Le mot de passe doit contenir au moins 8 caractères'"></app-error-message>
         </ng-container>
       </small>
     </div>

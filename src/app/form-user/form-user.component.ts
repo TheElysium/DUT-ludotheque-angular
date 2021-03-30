@@ -58,14 +58,16 @@ export class FormUserComponent implements OnInit {
     email: null
   };
 
-
+  // TO-DO -> changer les messages d'erreurs dans form-user-component
+  // j'ai modifié les validators ils ne correspondaient pas à ceux demandés dans l'issue
+  // (https://www.cril.univ-artois.fr/~hemery/enseignement/An20-21/projetTutS4/)
   formulaire: FormGroup = new FormGroup({
-    prenom: new FormControl(undefined, [Validators.required, Validators.minLength(3)]),
-    nom: new FormControl(undefined, [Validators.required]),
-    pseudo: new FormControl(undefined, [Validators.required]),
+    prenom: new FormControl(undefined, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
+    nom: new FormControl(undefined, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
+    pseudo: new FormControl(undefined, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
       email: new FormControl(undefined, [Validators.required, Validators.email]),
     pwd: new FormGroup({
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('[A-Z]{1,}\\d{1,}')]),
       confirmPassword: new FormControl('', [Validators.required]),
     // @ts-ignore
     }, [MesValidateurs.mustMatch])
