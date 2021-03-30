@@ -39,8 +39,8 @@ export class AjoutJeuComponent implements OnInit {
   get nombre_de_joueurs(): AbstractControl {
     return this.formulaire.get('nombre_de_joueurs');
   }
-  get age_minimum(): AbstractControl {
-    return this.formulaire.get('age_minimum');
+  get age(): AbstractControl {
+    return this.formulaire.get('age');
   }
   get poids(): AbstractControl {
     return this.formulaire.get('poids');
@@ -66,7 +66,7 @@ export class AjoutJeuComponent implements OnInit {
     regle: new FormControl('', [Validators.required]),
     langue: new FormControl('', [Validators.required]),
     nombre_de_joueurs: new FormControl('', [Validators.required, Validators.pattern('^[2-8]*$'), Validators.maxLength(1)]),
-    age_minimum: new FormControl('', [Validators.required, Validators.pattern('^\\d$|^1[0-6]$'), Validators.maxLength(2)]),
+    age: new FormControl('', [Validators.required, Validators.pattern('^\\d$|^1[0-6]$'), Validators.maxLength(2)]),
     poids: new FormControl('', [Validators.required, Validators.pattern('^[0-5]+[.,]+\\d{1,2}(?:\\d)?$'), Validators.maxLength(5)]),
     duree: new FormControl('', [Validators.required])
   });
@@ -82,7 +82,7 @@ export class AjoutJeuComponent implements OnInit {
     regle: null,
     langue: null,
     nombre_de_joueurs: null,
-    age_minimum: null,
+    age: null,
     poids: null,
     duree: null
   };
@@ -93,18 +93,18 @@ export class AjoutJeuComponent implements OnInit {
   onSubmit(): void {
     this.form = {...this.form, ...this.formulaire.value};
     if (this.formulaire.valid){
-      const registeredUser: Observable<any> = this.addGame(this.form.nom, this.form.description, this.form.theme, this.form.editeur, this.form.mecanique, this.form.url_media, this.form.regle, this.form.langue, this.form.nombre_de_joueurs, this.form.age_minimum, this.form.poids, this.form.duree);
-      registeredUser.subscribe(value => {
-        console.log('Registered : ' + value);
+      const registeredGame: Observable<any> = this.addGame(this.form.nom, this.form.description, this.form.theme, this.form.editeur, this.form.mecanique, this.form.url_media, this.form.regle, this.form.langue, this.form.nombre_de_joueurs, this.form.age, this.form.poids, this.form.duree);
+      registeredGame.subscribe(value => {
+        console.log('Added game : ' + value);
       });
     }
   }
 
-  addGame(nom: string, description: string, theme: string, editeur: string, mecanique: string, url_media: string, regle: string, langue: string, nombre_de_joueurs: string, age_minimum: string, poids: string, duree: string): Observable<any>{
+  addGame(nom: string, description: string, theme: string, editeur: string, mecanique: string, url_media: string, regle: string, langue: string, nombre_de_joueurs: string, age: string, poids: string, duree: string): Observable<any>{
     if (url_media !== ''){
       url_media = 'public/' + url_media;
     }
-    return this.http.post<any>(`${environment.apiUrl}/jeux`, {nom, description, theme, editeur, mecanique, url_media, regle, langue, nombre_de_joueurs, age_minimum, poids, duree}, AjoutJeuComponent.httpOptions);
+    return this.http.post<any>(`${environment.apiUrl}/jeux`, {nom, description, theme, editeur, mecanique, url_media, regle, langue, nombre_de_joueurs, age, poids, duree}, AjoutJeuComponent.httpOptions);
   }
 
 

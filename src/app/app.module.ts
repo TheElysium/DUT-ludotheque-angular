@@ -21,7 +21,6 @@ import {UserService} from './_services/user.service';
 import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
 import {MarkdownModule} from 'ngx-markdown';
 import { AlertService } from './_services/index';
-import {FormUserComponent} from './form-user/form-user.component';
 import { ErrorMessageComponent } from './error-message/error-message.component';
 
 import { GameListComponent } from './game-list/game-list.component';
@@ -31,6 +30,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { GameDetailsComponent } from './game-details/game-details.component';
 import { AjoutJeuComponent } from './ajout-jeu/ajout-jeu.component';
+import { FormUserComponent } from './form-user/form-user.component';
 import {Routes} from '@angular/router';
 
 registerLocaleData(localeFr, 'fr');
@@ -45,7 +45,8 @@ registerLocaleData(localeFr, 'fr');
     GameCardComponent,
     PageNotFoundComponent,
     GameListComponent,
-    AjoutJeuComponent
+    AjoutJeuComponent,
+    FormUserComponent
   ],
   imports: [
     BrowserModule,

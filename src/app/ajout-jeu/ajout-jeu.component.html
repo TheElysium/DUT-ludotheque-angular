@@ -91,11 +91,11 @@
   </div>
   <div class="p-formgroup-inline">
     <div class="p-field">
-      <label for="age_minimum" class="p-sr-only">Age minimum</label>
-      <input id="age_minimum" type="text" pInputText placeholder="Age minimum" formControlName="age_minimum">
-      <div *ngIf="age_minimum.invalid && (age_minimum.dirty || age_minimum.touched)" class="mat-error">
-        <div *ngIf="age_minimum?.errors.required" style="color: crimson">L'age minimum est obligatoire</div>
-        <div *ngIf="age_minimum?.errors.pattern"  style="color: crimson">l'age minimum doit etre compris entre 1 et 16</div>
+      <label for="age" class="p-sr-only">Age minimum</label>
+      <input id="age" type="text" pInputText placeholder="Age minimum" formControlName="age">
+      <div *ngIf="age.invalid && (age.dirty || age.touched)" class="mat-error">
+        <div *ngIf="age?.errors.required" style="color: crimson">L'age minimum est obligatoire</div>
+        <div *ngIf="age?.errors.pattern"  style="color: crimson">l'age minimum doit etre compris entre 1 et 16</div>
       </div>
     </div>
   </div>
