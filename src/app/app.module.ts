@@ -26,6 +26,8 @@ import { GameListComponent } from './game-list/landing-page.component';
 import {GameService} from "./game.service";
 import { GameCardComponent } from './game-card/game-card.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DetailJeuComponent } from './detail-jeu/detail-jeu.component';
+import { GameDetailsComponent } from './game-details/game-details.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -37,7 +39,9 @@ registerLocaleData(localeFr, 'fr');
     LpSolverTestComponent,
     ErrorMessageComponent,
     GameCardComponent
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DetailJeuComponent,
+    GameDetailsComponent
 
   ],
   imports: [

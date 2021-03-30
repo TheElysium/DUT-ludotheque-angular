@@ -1,10 +1,13 @@
-export class Game{
+ export class Game{
 
-  constructor(public nom: string,public  description: string,public  regles: string,public  langue: string, public url_media: string, public  age: number,public  poids: number,public  nombreJoueurs: number, public categorie: string, public duree: string) {}
+  constructor(public id: number,public nom: string,public  description: string,public  regles: string,public  langue: string,
+              public url_media: string, public  age: number,public  poids: number,public  nombreJoueurs: number,
+              public categorie: string, public duree: string, public theme_id:number, public editeur_id:number) {}
 
   //Create game from JSON
   public static fromJson(json: Object): Game{
     return new Game(
+      json['id'],
       json['nom'],
       json['description'],
       json['regles'],
@@ -15,6 +18,8 @@ export class Game{
       json['nombreJoueurs'],
       json['categorie'],
       json['duree'],
+      json['theme_id'],
+      json['editeur_id']
     );
   }
 }
