@@ -1,11 +1,27 @@
-<ul>
-  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']">Login</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']">Profile</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()">logout</button></li>
-  <li><a [routerLink]="['/ro']">Exo RO</a></li>
-</ul>
-<router-outlet></router-outlet>
+<!--<ul>-->
+<!--  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']">Login</a></li>-->
+<!--  <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']">Profile</a></li>-->
+<!--  <li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()">logout</button></li>-->
+<!--  <li><a [routerLink]="['/ro']">Exo RO</a></li>-->
+<!--</ul>-->
+<!--<router-outlet></router-outlet>-->
 
-<p-toast position="top-right" key="main"></p-toast>
+<!--<p-toast position="top-right" key="main"></p-toast>-->
 
-<button (click)="show()">test</button>
+<!--<button (click)="show()">test</button>-->
+
+
+<header>
+  <h3>Nom du site</h3>
+  <div *ngIf="authService.isLoggedIn$; else notLogged">
+    <a [routerLink]="['/profile']">Profil</a>
+  </div>
+
+  <ng-template #notLogged>
+    <a [routerLink]="['/login']">Login</a>
+    <a [routerLink]="['/register']">Register</a>
+  </ng-template>
+
+  <app-landing-page></app-landing-page>
+
+</header>
