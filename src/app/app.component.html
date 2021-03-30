@@ -19,12 +19,14 @@
   <ng-template #logged>
     <a [routerLink]="['/profile']">Profil</a>
   </ng-template>
-  
+
   <ng-template #notLogged>
     <a [routerLink]="['/login']">Login</a>
     <a [routerLink]="['/register']">Register</a>
   </ng-template>
 
-  <app-landing-page></app-landing-page>
 
+  <router-outlet>
+    <app-landing-page></app-landing-page>
+  </router-outlet>
 </header>
