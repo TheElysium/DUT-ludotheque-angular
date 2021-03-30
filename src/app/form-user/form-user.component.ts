@@ -4,6 +4,8 @@ import {Observable, throwError} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {MessageService} from 'primeng/api';
+import {MesValidateurs} from '../MesValidateurs';
 
 @Component({
   selector: 'app-form-user',
@@ -16,7 +18,7 @@ export class FormUserComponent implements OnInit {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private messageService: MessageService) {
   }
 
   get nom(): AbstractControl {
@@ -36,9 +38,14 @@ export class FormUserComponent implements OnInit {
   }
 
   get password(): AbstractControl{
-    return this.formulaire.get('password');
+    return this.formulaire.get('pwd').get('password');
   }
-
+  get confirmPassword(): AbstractControl{
+    return this.formulaire.get('pwd').get('confirmPassword');
+  }
+  get pwd(): AbstractControl{
+    return this.formulaire.get('pwd');
+  }
   titre: string;
 
   form: any = {
@@ -46,16 +53,23 @@ export class FormUserComponent implements OnInit {
     nom: null,
     pseudo: null,
     password: null,
+    confirmPassword: null,
     email: null
   };
+
 
   formulaire: FormGroup = new FormGroup({
     prenom: new FormControl(undefined, [Validators.required, Validators.minLength(3)]),
     nom: new FormControl(undefined, [Validators.required]),
     pseudo: new FormControl(undefined, [Validators.required]),
-    password: new FormControl(undefined, [Validators.required]),
+    pwd: new FormGroup({
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required]),
+    // @ts-ignore
+    }, [MesValidateurs.mustMatch]),
     email: new FormControl(undefined, [Validators.required, Validators.email]),
-  });
+  },
+  );
 
   ngOnInit(): void {
   }
@@ -65,21 +79,21 @@ export class FormUserComponent implements OnInit {
     if (this.formulaire.valid){
       console.log(this.form.prenom, this.form.nom);
       console.log('register() function');
-      const registeredUser: Observable<any> = this.register(this.form.prenom, this.form.nom, this.form.pseudo, this.form.email, this.form.password);
+      const registeredUser: Observable<any> = this.register(this.form.prenom, this.form.nom, this.form.pseudo, this.form.email, this.form.pwd.password);
       registeredUser.subscribe(value => {
         console.log('Registered : ' + value);
-        this.registered(value);
+        this.registered();
       });
     }
   }
-
-
 
   register(prenom: string, nom: string, pseudo: string, email: string, password: string): Observable<any>{
     return this.http.post<any>(`${environment.apiUrl}/auth/register`, {prenom, nom, pseudo, email, password}, FormUserComponent.httpOptions);
   }
 
-  registered(response): any{
-    this.router.navigate(['/login']);
+  registered(): any{
+    // @ts-ignore
+    this.messageService.add({severity: 'info', summary: 'Enregistrement', detail: `Bienvenue, ${pseudo}`, key: 'main'});
+    this.router.navigate(['/login'], { queryParams: { email: this.form.email } } );
   }
 }

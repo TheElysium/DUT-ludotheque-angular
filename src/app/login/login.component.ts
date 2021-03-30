@@ -33,6 +33,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // get return url from route parameters or default to '/'
+    this.formulaire = new FormGroup({
+      email: new FormControl(this.route.snapshot.queryParamMap.get('email'), [Validators.required]),
+      password: new FormControl('', [Validators.required])
+    })
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 
