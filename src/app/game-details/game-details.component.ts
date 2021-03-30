@@ -13,7 +13,7 @@ export class GameDetailsComponent implements OnInit {
   game: Game;
   gameId: number;
 
-  mecaniques = ['meca1', 'meca2']; // TO-DO get mechanics from the API
+  mechanics = ['meca1', 'meca2']; // TO-DO get mechanics from the API
 
   loading = false;
 

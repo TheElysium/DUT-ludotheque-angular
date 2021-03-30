@@ -52,4 +52,30 @@ export class GameService {
         }),
       );
   }
+
+  getMechanics(): Observable<any[]>{
+    const url: string = 'http://localhost:8000/api/mechanics';
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+    };
+
+    return this.http.get<any>(url, httpOptions)
+      .pipe(
+        map(res => res.data.item),
+        catchError(err => {
+          console.log('Erreur http : ', err);
+          return of([]);
+        }),
+      );
+  }
+
+  getMechanicById(mechId: number): any{
+    this.getMechanics().subscribe(mechanics => {
+      return mechanics.filter(m => {
+        if (m.id === mechId) {
+          return m;
+        }
+      });
+    });
+  }
 }
