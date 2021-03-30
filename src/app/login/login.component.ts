@@ -4,6 +4,7 @@ import {AuthentificationService} from '../_services/authentification.service';
 import {first} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MessageService} from 'primeng/api';
+import {EmailValidator} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -19,9 +20,11 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   error = '';
 
+  errorMessages = [];
+
   formulaire = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
+    email: new FormControl('robert.duchmol@domain.fr', [Validators.required, Validators.email]),
+    password: new FormControl('secret00', [Validators.required])
   });
 
   constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,

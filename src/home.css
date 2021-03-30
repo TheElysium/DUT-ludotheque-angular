@@ -1,0 +1,141 @@
+
+
+
+
+
+header {
+    position: relative;
+
+    height: 7rem;
+
+    padding: 1rem 10rem;
+    background-color: var(--skeleton);
+}
+
+.header__container {
+    margin: auto;
+    display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+    min-width: 200px;
+    width: 80%;
+}
+
+
+
+
+
+/* ----------- HEADER / LEFT -----------*/
+
+.header__logo {
+    width: 10rem;
+    padding: 5px;
+}
+
+
+
+/* ----------- HEADER / RIGHT -----------*/
+
+
+
+.header-right {
+    display: flex;
+        align-items: center;
+}
+
+.header__profile {
+    background-color: var(--main);
+    border-radius: 5rem;
+
+    width: 5rem;
+    height: 5rem;
+
+    background-image: url("./assets/ProfilePic1.png");
+    background-position: center;
+    background-size: contain;
+}
+
+i.header__arrow {
+    display: inline-block;
+    transform: rotate(135deg) translate(-3px, -7px);
+
+    width: 15px;
+    height: 15px;
+
+    border-top: 2.8px solid var(--light);
+    border-right: 2.8px solid var(--light);
+}
+
+.header__container-arrow {
+    position: relative;
+    cursor: pointer;
+
+    height: 2rem;
+    width: 2rem;
+    margin-left: 18px;
+
+}
+
+
+
+
+/* ----------- MEDIA QUERIES -----------*/
+
+@media screen and (max-width: 1000px) {
+    header {
+        padding: 1rem 0;
+    }
+
+    .header__container {
+        justify-content: center;
+    }
+    .header__logo {
+        margin: auto;
+    }
+
+    .header-right {
+        position: absolute;
+        right: 35px;
+    }
+
+    .header__profile {
+        width: 3.6rem;
+        height: 3.6rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header-right {
+        right: 12px;
+    }
+
+    .header__container {
+        justify-content: unset;
+        width: calc(100% - 1rem);
+    }
+    .header__container-arrow {
+        margin-left: 9px;
+    }
+}
+
+
+
+
+@media screen and (max-width: 300px) {
+    header {
+        height: 11rem;
+    }
+    .header__container {
+        display: grid;
+    }
+    .header__container a {
+    width: fit-content;
+    margin: auto;
+    }
+    .header-right {
+        position: unset;
+        width: fit-content;
+        margin: auto;
+    }
+}
