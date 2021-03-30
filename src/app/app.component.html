@@ -13,15 +13,20 @@
 
 <header>
   <h3>Nom du site</h3>
-  <div *ngIf="authService.isLoggedIn$; else notLogged">
-    <a [routerLink]="['/profile']">Profil</a>
+  <div *ngIf="authService.isLoggedIn$ | async;then logged; else notLogged">
   </div>
+
+  <ng-template #logged>
+    <a [routerLink]="['/profile']">Profil</a>
+  </ng-template>
 
   <ng-template #notLogged>
     <a [routerLink]="['/login']">Login</a>
     <a [routerLink]="['/register']">Register</a>
   </ng-template>
 
-  <app-game-list></app-game-list>
 
+  <router-outlet>
+    <app-game-list></app-game-list>
+  </router-outlet>
 </header>
