@@ -1,4 +1,4 @@
-<h3>Profile d'un utilisateur</h3>
+<h3>Profil d'un utilisateur</h3>
 <br>
 <div *ngIf="!loading">
   <h2>{{user.pseudo}}</h2>
@@ -6,5 +6,48 @@
   <p>{{user.email}}</p>
   <p>Crée : {{user.created_at | amDateFormat:'LL'}} </p>
   <p>Modifié : {{user.updated_at | amDateFormat:'LL'}} </p>
+
   <button [routerLink]="['/user/' + user.id + '/edit']">Modifier</button>
+
+  <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+    <div>
+      Jeu :
+      <select type="game" name="game" formControlName="game">
+        <option *ngFor="let game of games" [value]="game.id">{{game.nom}}</option>
+      </select>
+      Date d'achat<input type="date" name="date" formControlName="date"><br>
+      <small *ngIf="date.invalid && date.touched"  id="date-help" class="p-error">
+      <ng-container *ngIf="date.errors?.required">
+        <app-error-message [message]="'Date requis !'"></app-error-message>
+      </ng-container>
+      <ng-container *ngIf="date.errors?.pattern">
+        <app-error-message [message]="'Mauvais format : dd/mm/yyyy !'"></app-error-message>
+      </ng-container>
+      </small>
+
+      Lieu de stockage <input type="storage" formControlName="storage"><br>
+        <small *ngIf="storage.invalid && storage.touched"  id="storage-help" class="p-error">
+      <ng-container *ngIf="storage.errors?.required">
+        <app-error-message [message]="'Lieu de stock requis'"></app-error-message>
+      </ng-container>
+        </small>
+
+      Prix d'achat <input type="price" formControlName="price"><br>
+          <small *ngIf="price.invalid && price.touched"  id="price-help" class="p-error">
+      <ng-container *ngIf="price.errors?.required">
+        <app-error-message [message]="'Prix requis'"></app-error-message>
+      </ng-container>
+            <ng-container *ngIf="price.errors?.pattern">
+              <app-error-message [message]="'Le prix doit être compris entre 1 et 250'"></app-error-message>
+            </ng-container>
+          </small>
+    </div>
+    <button [disabled]="!formulaire.valid">Valide</button>
+  </form>
+  <ul>
+    <li *ngFor="let game of gameUser">
+      {{game.id}}
+    </li>
+  </ul>
 </div>
+
