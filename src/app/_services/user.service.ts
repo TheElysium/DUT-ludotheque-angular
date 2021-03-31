@@ -5,7 +5,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {catchError, map, tap} from 'rxjs/operators';
 import {User} from '../_models/user';
-import {Game} from '../game';
+import {Game} from "../game";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})

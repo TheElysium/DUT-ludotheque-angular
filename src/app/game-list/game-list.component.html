@@ -36,8 +36,6 @@
   </select>
 </div>
 
-<ul>
-  <li *ngFor="let game of gameList">
-    <app-game-card [game]="game"></app-game-card>
-  </li>
-</ul>
+<div class="homepage__card-container-inner">
+  <app-game-card *ngFor="let game of gameList" [game]="game"></app-game-card>
+</div>

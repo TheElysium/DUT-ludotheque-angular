@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/* FONT / MONTSERRAT
+font-family: 'Montserrat', sans-serif;
+*/
+
+
+::selection {
+  background: var(--dark-accent);
+}
+
+
+:host, :root {
+  --main: #fea42b; /* Brand color */
+
+  --light-accent: #fe6e6e; /* Links / Buttons */
+  --dark-accent: #db423d; /* Links / Buttons */
+
+  --light: #ffffff; /* Used for Sections */
+  --dark: #292929; /* Used for Sections */
+
+  --background: #151515;
+  --skeleton: #000000; /* Used for Header & Footer */
+}
+
+/* home.css */
+
+
+
+
+
+
+header {
+  position: relative;
+
+  /*height: 7rem;*/
+
+  padding: 1rem 10rem;
+  background-color: var(--skeleton);
+}
+
+.header__container {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-width: 200px;
+  width: 80%;
+}
+
+
+
+
+
+/* ----------- HEADER / LEFT -----------*/
+
+.header__logo {
+  width: 10rem;
+  padding: 5px;
+  margin-right: 3vw;
+}
+
+.header-left{
+
+}
+
+
+/* ----------- HEADER / RIGHT -----------*/
+
+
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header__profile {
+  background-color: var(--main);
+  border-radius: 5rem;
+
+  width: 5rem;
+  height: 5rem;
+
+  background-image: url('../assets/player.svg');
+  background-position: center;
+  background-size: contain;
+}
+
+.header__container-arrow {
+  position: relative;
+  cursor: pointer;
+
+  height: 2rem;
+  width: 2rem;
+  margin-left: 18px;
+
+  padding: 7px;
+}
+
+i.header__arrow {
+  display: inline-block;
+  transform: translate(0px, 9px);
+  background-image: url('../assets/arrow_down.svg');
+  opacity: 0.3;
+  transition: opacity .1s ease;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  height: 12px;
+  width: 15px;
+}
+div.header__container-arrow:hover i.header__arrow {
+  opacity: 1 !important;
+  transition: opacity .1s ease;
+}
+
+
+
+
+
+
+/* ----------- MEDIA QUERIES -----------*/
+
+@media screen and (max-width: 1000px) {
+  header {
+    padding: 1rem 0;
+  }
+
+  .header__container {
+    justify-content: center;
+  }
+  .header__logo {
+    margin: auto;
+  }
+
+  .header-right {
+    position: absolute;
+    right: 35px;
+  }
+
+  .header__profile {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header-right {
+    right: 12px;
+  }
+
+  .header__container {
+    justify-content: unset;
+    width: calc(100% - 1rem);
+  }
+  .header__container-arrow {
+    margin-left: 9px;
+  }
+}
+
+
+
+@media screen and (max-width: 300px) {
+  header {
+    height: 11rem;
+  }
+  .header__container {
+    display: grid;
+  }
+  .header__container a {
+    width: fit-content;
+    margin: auto;
+  }
+  .header-right {
+    position: unset;
+    width: fit-content;
+    margin: auto;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------- ----------- ------------ */
+/* -----------   CONTENTS   ----------- */
+/* ----------- ----------- ------------ */
+
+
+
+.homepage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.homepage__container {
+  padding: 5rem 0 7rem 0;
+
+  display: grid;
+  grid-row: auto;
+
+  width: 100%;
+  min-height: 67vh;
+  height: auto;
+
+}
+
+
+
+
+
+
+
+/* ----------- MEDIA QUERIES -----------*/
+
+@media screen and (max-width: 1090px) {
+  .homepage__card-container-inner {
+    width: calc(100% - 5rem);
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, 190px);
+    place-content: center;
+    row-gap: 3rem;
+  }
+}
+
+
+@media screen and (max-width: 516px) {
+  .homepage__card-container-inner {
+    width: 100%;
+    gap: 30px;
+    transition: gap .8s ease-in;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/*
+.homepage__card-container-inner {
+    grid-template-columns: repeat(auto-fill, 160px);
+}
+*/
+
+
+
+
+
+
+
+
+
+
+* {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--light);
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+}
+
+section {
+  background: var(--background);
+}
+
+p {
+  font-size: 18px;
+  font-stretch: semi-expanded;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+li {
+  list-style-type: none;
+}
+
+/* FOOTER */
+footer {
+  position: absolute;
+  background-color: var(--skeleton);
+
+  width: 100%;
+  height: 10rem;
+
+  display: flex;
+  place-content: center;
+}
+
+footer div {
+  position: absolute;
+  bottom: 25px;
+
+  color: var(--light);
+  opacity: .3;
+}

@@ -1,47 +1,45 @@
-<!--<ul>-->
-<!--  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']">Login</a></li>-->
-<!--  <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']">Profile</a></li>-->
-<!--  <li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()">logout</button></li>-->
-<!--  <li><a [routerLink]="['/ro']">Exo RO</a></li>-->
-<!--</ul>-->
-<!--<router-outlet></router-outlet>-->
-
-<!--<p-toast position="top-right" key="main"></p-toast>-->
-
-<!--<button (click)="show()">test</button>-->
-
-
 <header>
-  <h3><a [routerLink]="['/home']">Nom du site</a></h3>
-  <ul>
-    <div *ngIf="authService.isLoggedIn$ | async;then logged; else notLogged">
-    </div>
+    <div class="header__container">
+      <div class="header-left">
+        <a [routerLink]="['/']">
+          <img src="./assets/logo-ranch.svg" draggable="true" alt="logo-ranch" class="header__logo">
+        </a>
+        <a [routerLink]="['/games']">Jeux</a>
+      </div>
 
-    <ng-template #logged>
-      <li>
-        <a [routerLink]="['/profile']">Profil</a>
-      </li>
-      <li>
-        <a [routerLink]="['/add-game']">Ajouter jeu</a>
-      </li>
-      <li>
-        <button (click)="logout()">Déconnexion</button>
-      </li>
+      <div class="header-right">
+        <a [routerLink]="['/profile']">
+          <div class="header__profile" *ngIf="authService.isLoggedIn$ | async"></div>
+        </a>
+        <div class="header__container-arrow" id="header__dropmenu" *ngIf="authService.isLoggedIn$ | async; then loggedIn else notLogged">
+        </div>
+      </div>
+    </div>
+  </header>
+
+    <ng-template #loggedIn>
+      <select class="menu-select">
+        <option [routerLink]="['/profile']">Profil</option>
+        <option [routerLink]="['/add-game']">Ajouter jeu</option>
+        <option (click)="logout()">Déconnexion</option>
+      </select>
     </ng-template>
 
     <ng-template #notLogged>
-      <li>
-        <a [routerLink]="['/login']">Connexion</a>
-      </li>
-      <li>
-        <a [routerLink]="['/register']">Inscription</a>
-      </li>
+      <a [routerLink]="['/login']">Connexion</a>
+      <a [routerLink]="['/register']">S'enregistrer</a>
     </ng-template>
-    <li>
-      <a [routerLink]="['/games']">Jeux</a>
-    </li>
-  </ul>
 
-  <router-outlet>
-  </router-outlet>
-</header>
+
+<section class="homepage">
+  <div class="homepage__container">
+    <router-outlet>
+    </router-outlet>
+  </div>
+</section>
+
+<footer>
+  <div>© 2021 Ranch Industries</div>
+</footer>
+
+

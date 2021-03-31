@@ -42,12 +42,18 @@ export class ProfileComponent implements OnInit {
     date: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required, Validators.pattern('^\\b([1-9]|[1-9][0-9]|[1-2][0-4][1-9])$')])
   });
+  gameUser: Game[];
+
+  constructor(private userService: UserService, private messageService: MessageService, private router: Router, private gameService: GameService) {
+    this.loading = false;
+  }
 
   ngOnInit(): void {
     this.loading = true;
     this.userService.getProfile().subscribe(
       user => {
         this.user = {...this.user, ...user};
+        this.gameUser = this.gameService.getGameUser(this.user.id);
         this.loading = false;
       },
       (err) => {
