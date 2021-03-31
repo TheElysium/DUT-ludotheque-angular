@@ -1,7 +1,10 @@
 <div>
-  <h3>{{game.id}}</h3>
-  <h3>{{game.nom}}</h3>
-  <h3>{{game.categorie}}</h3>
-  <h3>{{game.age}}</h3>
+  <h3>Nom : {{game.nom}}</h3>
+  <h3>Photo : On en a pas mais l'intention est là</h3>
+  <h3>Thème : {{game.theme_id.nom}}</h3>
+  <h3>Durée : {{game.duree}}</h3>
+  <h3>Nombre de joueurs : {{game.nombre_joueurs}}</h3>
+  <h3>Âge : {{game.age}}</h3>
+
   <a [routerLink]="['/game/'+game.id]">Détails</a>
 </div>
