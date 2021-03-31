@@ -33,7 +33,7 @@
     </div>
     <div class="p-field">
       <label for="pseudo">Pseudo</label>
-      <input id="pseudo" type="text" pInputText placeholder="Pseudonyme" aria-describedby="pseudo-help" formControlName="pseudo">
+      <input id="pseudo" type="text" pInputText placeholder="Pseudonyme" aria-describedby="pseudo-help" formControlName="pseudo" >
       <small *ngIf="pseudo.invalid && pseudo.touched"  id="pseudo-help" class="p-error">
       <ng-container *ngIf="pseudo.errors?.required">
         <app-error-message [message]="'Le pseudo est obligatoire'"></app-error-message>
@@ -59,7 +59,7 @@
       </small>
     </div>
 
-      <div formGroupName="pwd">
+      <div formGroupName="pwd" *ngIf="user === undefined">
     <div class="p-field">
       <label for="password">Mot de passe</label>
       <input type="password" id="password" placeholder="Mot de passe" class="form-control" formControlName="password">
