@@ -78,5 +78,13 @@ export class GameService {
       });
     });
   }
+  getGameUser(userId: number): Game[]{
+    let gameUser: Game[] = [];
 
+    this.getGameList().subscribe(
+      (gameList: Game[]) => gameUser = gameList
+    );
+
+    return gameUser.filter((game: Game) => game.user_id.id === userId);
+  }
 }
