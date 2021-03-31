@@ -59,18 +59,44 @@ export class GameListComponent implements OnInit {
 
   filter(): void{
     console.log("Filtrage...");
-    if(this.age.value != null){this.filterList.push(["age", this.age.value])}
-    if(this.nombreJoueurs.value != null){this.filterList.push(["nbJoueurs", this.nombreJoueurs.value])}
-    if(this.editor.value != null) this.filterList.push(["editeur", this.editor.value]);
-    if(this.theme.value != null) this.filterList.push(["theme", this.theme.value]);
+    this.filterList = [];
+
+    if(this.age.value != null){
+      this.filterList.push(["age", this.age.value])
+      this.gameList = this.gameList.filter((game:Game) => game.age <= this.age.value)
+    }
+    if(this.nombreJoueurs.value != null){
+      this.filterList.push(["nbJoueurs", this.nombreJoueurs.value])
+      this.gameList = this.gameList.filter((game:Game) => game.nombre_joueurs <= this.nombreJoueurs.value)
+    }
+    // if(this.editor.value != null) {
+    //   this.filterList.push(["editeur", this.editor.value]);
+    //   this.gameList = this.gameList.filter((game:Game) => game.editor <= this.editor.value)
+    // }
+    // if(this.theme.value != null) {
+    //   this.filterList.push(["theme", this.theme.value]);
+    //   this.gameList = this.gameList.filter((game:Game) => game.theme <= this.theme.value)
+    // }
     //.....
 
     this.filterList.forEach(f => console.log(f));
-    this.getGameList(null, this.filterList);
+    this.gameList.forEach(f => console.log(f));
+
+    //Filtrage et coté API mais ne permet pas le filtrage multiple
+    //this.getGameList(null, this.filterList);
+
   }
 
   sort(sortBy: string): void{
-    this.getGameList(sortBy,this.filterList);
+    //Tri coté API mais ne permet pas de faire un tri sur une liste filtrée
+    //this.getGameList(sortBy);
+
+    if(sortBy === "nom"){
+      this.gameList = this.gameList.sort((a: Game, b: Game) => a.nom > b.nom ? 1:-1);
+    }
+    else if(sortBy === "note"){
+      this.getGameList(sortBy);
+    }
   }
 
   get age(){
