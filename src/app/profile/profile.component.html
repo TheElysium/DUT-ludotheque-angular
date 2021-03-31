@@ -44,16 +44,11 @@
     </div>
     <button [disabled]="!formulaire.valid">Valide</button>
   </form>
-  <ul>
-    <li *ngFor="let game of gameUser">
-      {{game.id}}
-    </li>
-  </ul>
-  <ul>
-    <li *ngFor="let game of gameUser">
-      <app-game-card [game]="game"></app-game-card>
-    </li>
-  </ul>
   <h2>Mon inventaire :</h2>
+  <ul>
+    <li *ngFor="let game of gameUser">
+      <app-game-card [game]="game.jeu"></app-game-card>
+    </li>
+  </ul>
 </div>
 
