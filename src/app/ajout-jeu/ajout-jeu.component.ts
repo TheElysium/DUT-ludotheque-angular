@@ -4,6 +4,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
+import {Theme} from "../theme";
+import {ThemeService} from "../theme.service";
+import {Editor} from "../editor";
+import {EditorService} from "../editor.service";
 
 @Component({
   selector: 'app-ajout-jeu',
@@ -12,6 +16,9 @@ import {environment} from '../../environments/environment';
 })
 
 export class AjoutJeuComponent implements OnInit {
+  themes: Theme[];
+  editeurs: Editor[];
+
   get nom(): AbstractControl {
     return this.formulaire.get('nom');
   }
@@ -49,7 +56,7 @@ export class AjoutJeuComponent implements OnInit {
     return this.formulaire.get('duree');
   }
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private themeService: ThemeService, private editorService: EditorService) {
   }
 
   static httpOptions = {
@@ -89,6 +96,8 @@ export class AjoutJeuComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.themeService.getThemes().subscribe(value => this.themes = value);
+    this.editorService.getEditors().subscribe(value => this.editeurs = value);
   }
   onSubmit(): void {
     this.form = {...this.form, ...this.formulaire.value};

@@ -21,8 +21,10 @@
   </div>
   <div class="p-formgroup-inline">
     <div class="p-field">
-      <label for="theme" class="p-sr-only">Theme</label>
-      <input id="theme" type="text" pInputText placeholder="Theme" formControlName="theme">
+      <label form="theme" class="p-sr-only">Theme</label>
+      <select type="theme" name="theme" formControlName="theme">
+        <option *ngFor="let theme of themes" [value]="theme.id">{{theme.nom}}</option>
+      </select>
       <div *ngIf="theme.invalid && (theme.dirty || theme.touched)" class="mat-error">
         <div *ngIf="theme?.errors.required" style="color: crimson">Le theme est obligatoire</div>
       </div>
@@ -30,8 +32,10 @@
   </div>
   <div class="p-formgroup-inline">
     <div class="p-field">
-      <label for="editeur" class="p-sr-only">Editeur</label>
-      <input id="editeur" type="text" pInputText placeholder="Editeur" formControlName="editeur">
+      <label form="editeur" class="p-sr-only">Editeur</label>
+      <select type="editeur" name="editeur" formControlName="editeur">
+        <option *ngFor="let editeur of editeurs" [value]="editeur.id">{{editeur.nom}}</option>
+      </select>
       <div *ngIf="editeur.invalid && (editeur.dirty || editeur.touched)" class="mat-error">
         <div *ngIf="editeur?.errors.required" style="color: crimson">L'editeur est obligatoire</div>
       </div>

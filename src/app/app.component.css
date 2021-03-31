@@ -80,6 +80,9 @@ header {
   align-items: center;
 }
 
+.header-right :nth-child(3) {
+  margin-left: 2vw;
+}
 .header__profile {
   background-color: var(--main);
   border-radius: 5rem;
