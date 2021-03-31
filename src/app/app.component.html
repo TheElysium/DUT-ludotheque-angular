@@ -24,6 +24,9 @@
       <li>
         <a [routerLink]="['/add-game']">Ajouter jeu</a>
       </li>
+      <li>
+        <button (click)="logout()">Déconnexion</button>
+      </li>
     </ng-template>
 
     <ng-template #notLogged>
