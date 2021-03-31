@@ -212,27 +212,6 @@ div.header__container-arrow:hover i.header__arrow {
 
 }
 
-.homepage__card-container-inner {
-  /*
-  display: grid;
-      justify-items: center;
-      grid-template-columns: repeat(auto-fill, 240px);
-      place-content: center;
-      row-gap: 3rem;
-  */
-
-  margin: auto;
-  transform: scale(.96);
-  transition: gap .4s ease-in;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2.5rem;
-
-  width: calc(265px * 4);
-  height: auto;
-}
 
 
 
