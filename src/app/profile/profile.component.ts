@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
     this.userService.getProfile().subscribe(
       user => {
         this.user = {...this.user, ...user};
+        this.gameUser = this.gameService.getGameUser(this.user.id);
         this.loading = false;
       },
       (err) => {
@@ -35,7 +36,6 @@ export class ProfileComponent implements OnInit {
         this.router.navigateByUrl('/');
       }
     );
-    this.gameUser = this.gameService.getGameUser(this.user.id);
   }
 
 }
