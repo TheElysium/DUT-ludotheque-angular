@@ -12,7 +12,7 @@ import {EditorService} from "../editor.service";
 @Component({
   selector: 'app-ajout-jeu',
   templateUrl: './ajout-jeu.component.html',
-  styleUrls: ['./ajout-jeu.component.css']
+  styleUrls: ['./ajout-jeu.component.css', '../app.component.css']
 })
 
 export class AjoutJeuComponent implements OnInit {

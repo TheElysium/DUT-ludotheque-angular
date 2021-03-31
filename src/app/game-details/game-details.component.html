@@ -1,7 +1,7 @@
 <div>
   <h1>{{game.nom}}</h1>
   <div *ngIf="game.url_media">
-    <img src="{{game.url_media}}">
+    <img class="game_image" src="{{game.url_media}}">
   </div>
   <h2>Mécaniques :</h2>
   <ul>
@@ -45,7 +45,10 @@
           </ng-container>
         </small>
       </div>
-      <button pButton type="submit" >Commenter</button>
+        <a class="button__link">
+          <button class="button__btn-big" type="submit">Commenter</button>
+        </a>
+
     </form>
   </div>
   <ng-template #mustLogin>
