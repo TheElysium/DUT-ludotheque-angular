@@ -9,7 +9,7 @@ import {GameService} from '../game.service';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {AuthentificationService} from '../_services/authentification.service';
+import {AuthentificationService} from "../_services/authentification.service";
 
 @Component({
   selector: 'app-profile',

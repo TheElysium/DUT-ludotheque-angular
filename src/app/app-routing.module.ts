@@ -9,6 +9,7 @@ import {FormUserComponent} from './form-user/form-user.component';
 import {GameListComponent} from './game-list/game-list.component';
 import {HomeComponent} from './home/home.component';
 import {GameDetailsComponent} from './game-details/game-details.component';
+import {EditUserComponent} from "./edit-user/edit-user.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'ro', component: LpSolverTestComponent},
   { path: 'register', component: FormUserComponent },
   {path: 'add-game', component: AjoutJeuComponent},
+  {path: 'user/:id/edit', component: EditUserComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 

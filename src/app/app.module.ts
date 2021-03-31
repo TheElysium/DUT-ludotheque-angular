@@ -36,6 +36,7 @@ import { HomeComponent } from './home/home.component';
 import { APP_BASE_HREF} from '@angular/common';
 import {EditorService} from "./editor.service";
 import {ThemeService} from "./theme.service";
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -52,7 +53,8 @@ registerLocaleData(localeFr, 'fr');
     AjoutJeuComponent,
     FormUserComponent,
     HomeComponent,
-    GameDetailsComponent
+    GameDetailsComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
