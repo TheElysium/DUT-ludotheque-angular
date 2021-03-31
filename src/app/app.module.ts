@@ -31,9 +31,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { GameDetailsComponent } from './game-details/game-details.component';
 import { AjoutJeuComponent } from './ajout-jeu/ajout-jeu.component';
 import { FormUserComponent } from './form-user/form-user.component';
-import {Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
-
+import { APP_BASE_HREF} from '@angular/common';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -63,6 +63,7 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
@@ -71,6 +72,7 @@ registerLocaleData(localeFr, 'fr');
     AlertService,
     AuthentificationService,
     GameService,
+    {provide: APP_BASE_HREF, useValue : '/'}
   ],
   bootstrap: [AppComponent]
 })
