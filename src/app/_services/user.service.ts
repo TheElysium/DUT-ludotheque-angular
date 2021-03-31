@@ -24,6 +24,8 @@ export class UserService {
         catchError(err => throwError(err))
       );
   }
+
+
   createUser(user: User): Observable<User> {
     const url = `${environment.apiUrl + '/auth/register'}/user`;
     console.log(url);
@@ -32,6 +34,20 @@ export class UserService {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
     return this.http.post<any>(url, user, httpOptions)
+      .pipe(
+        map(res => res.data.item),
+        tap(body => console.log(body)),
+        catchError(err => {
+          console.log('Erreur http : ', err);
+          return of(undefined);
+        })
+      );
+  }
+
+  updateUser(user: UserInfo): Observable<UserInfo> {
+    console.log("Update user ...");
+    const url = `${environment.apiUrl}/users/${user.id}`;
+    return this.http.put<any>(url, user, httpOptions)
       .pipe(
         map(res => res.data.item),
         tap(body => console.log(body)),

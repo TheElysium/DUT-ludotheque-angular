@@ -6,4 +6,5 @@
   <p>{{user.email}}</p>
   <p>Crée : {{user.created_at | amDateFormat:'LL'}} </p>
   <p>Modifié : {{user.updated_at | amDateFormat:'LL'}} </p>
+  <button [routerLink]="['/user/' + user.id + '/edit']">Modifier</button>
 </div>
