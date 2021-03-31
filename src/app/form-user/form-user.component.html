@@ -4,7 +4,17 @@
     <div class="p-field">
       <label for="nom">Nom</label>
       <input id="nom" type="text" pInputText placeholder="nom" aria-describedby="nom-help" formControlName="nom">
-      <small *ngIf="nom.invalid && nom.touched"  id="nom-help" class="p-error">Le nom est obligatoire.</small>
+      <small *ngIf="nom.invalid && nom.touched"  id="nom-help" class="p-error">
+      <ng-container *ngIf="nom.errors?.required">
+        <app-error-message [message]="'Le nom est obligatoire'"></app-error-message>
+      </ng-container>
+      <ng-container *ngIf="nom.errors?.minlength">
+        <app-error-message [message]="'Le nom doit contenir au moins 2 caractères'"></app-error-message>
+      </ng-container>
+      <ng-container *ngIf="nom.errors?.maxlength">
+        <app-error-message [message]="'Le nom doit contenir au plus 100 caractères'"></app-error-message>
+      </ng-container>
+      </small>
     </div>
     <div class="p-field">
       <label for="prenom">Prenom</label>
@@ -14,14 +24,27 @@
           <app-error-message [message]="'Le prénom est obligatoire'"></app-error-message>
         </ng-container>
         <ng-container *ngIf="prenom.errors?.minlength">
-          <app-error-message [message]="'Le prénom doit contenir au moins 3 caractères'"></app-error-message>
+          <app-error-message [message]="'Le prénom doit contenir au moins 2 caractères'"></app-error-message>
+        </ng-container>
+        <ng-container *ngIf="prenom.errors?.maxlength">
+          <app-error-message [message]="'Le prénom doit contenir au plus 100 caractères'"></app-error-message>
         </ng-container>
       </small>
     </div>
     <div class="p-field">
       <label for="pseudo">Pseudo</label>
       <input id="pseudo" type="text" pInputText placeholder="Pseudonyme" aria-describedby="pseudo-help" formControlName="pseudo">
-      <small *ngIf="pseudo.invalid && pseudo.touched"  id="pseudo-help" class="p-error">Le pseudo est obligatoire.</small>
+      <small *ngIf="pseudo.invalid && pseudo.touched"  id="pseudo-help" class="p-error">
+      <ng-container *ngIf="pseudo.errors?.required">
+        <app-error-message [message]="'Le pseudo est obligatoire'"></app-error-message>
+      </ng-container>
+      <ng-container *ngIf="pseudo.errors?.minlength">
+        <app-error-message [message]="'Le pseudo doit contenir au moins 2 caractères'"></app-error-message>
+      </ng-container>
+      <ng-container *ngIf="pseudo.errors?.maxlength">
+        <app-error-message [message]="'Le pseudo doit contenir au plus 100 caractères'"></app-error-message>
+      </ng-container>
+      </small>
     </div>
     <div class="p-field">
       <label for="email">Email</label>
