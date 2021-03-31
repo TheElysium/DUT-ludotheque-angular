@@ -4,19 +4,20 @@ import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, map, tap} from "rxjs/operators";
 import {Observable, of} from "rxjs";
+import {AuthentificationService} from "./authentification.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentaireService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public authService:AuthentificationService) { }
 
-  postComment(note: number, commentaire: string, jeu_id: number, date_com: string): Observable<any>{
+  postComment(note: number, commentaire: string, jeu_id: number, date_com: string){
     const url = `${environment.apiUrl + '/commentaires'}`;
 
     const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
     };
 
     const data = {
@@ -27,7 +28,7 @@ export class CommentaireService {
     }
 
     console.log(data);
-
+    // Ca marche pas igh imma head out
     return this.http.post<any>(url, data, httpOptions)
       .pipe(
         map(res => res.data.item),
