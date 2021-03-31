@@ -65,7 +65,7 @@ export class ProfileComponent implements OnInit {
 
     this.userService.getUser(this.authService.userValue.id).subscribe(
       user => {
-        this.userFull = {...this.userFull, ...user};;
+        this.userFull = {...this.userFull, ...user};
         this.gameUser = this.userFull.jeux;
         this.loading = false;
         console.log('user : ' + user);
@@ -76,8 +76,6 @@ export class ProfileComponent implements OnInit {
         console.log(err);
       }
     );
-
-    console.log(this.userFull);
     this.getGameList();
     console.log('userFull: ' + this.userFull);
 

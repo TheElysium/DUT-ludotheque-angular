@@ -64,7 +64,7 @@
   <div class="user__inventory">
     <h2 class="important__title">Mon inventaire :</h2>
     <div class="homepage__card-container-inner">
-      <app-game-card *ngFor="let game of gameUser" [game]="game"></app-game-card>
+      <app-game-card *ngFor="let game of gameUser" [game]="game.jeu"></app-game-card>
     </div>
   </div>
 </div>
