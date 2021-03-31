@@ -3,7 +3,12 @@
     <div class="card__img" id="card__img"></div></div>
     <div class="card__info">
       <div class="card__darker-area"></div>
-      <div class="card__info-label card__darker-area"><div>{{game.categorie}}</div></div>
+      <div class="card__info-label card__darker-area">
+        <div>
+          <div *ngIf="game.categorie === undefined; then noCat else cat">
+          </div>
+        </div>
+        </div>
       <div class="card__values">
         <li><div class="card__nbplayer-img card__values-img"></div>
           <div>{{game.nombre_joueurs}}</div>
@@ -19,3 +24,11 @@
     <div class="card__title"><span>{{game.nom}}</span></div>
   </div>
 </a>
+
+<ng-template #noCat>
+  {{noCatString}}
+</ng-template>
+
+<ng-template #cat>
+  {{game.categorie}}
+</ng-template>

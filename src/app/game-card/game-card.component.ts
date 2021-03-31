@@ -9,7 +9,7 @@ import {Filter, Game, Sort} from "../game";
   styleUrls: ['./game-card.component.css']
 })
 export class GameCardComponent implements OnInit {
-
+  public noCatString = 'Non catégorisé';
   @Input() game: Game;
   constructor(public route: ActivatedRoute, public gameService: GameService) { }
 

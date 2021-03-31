@@ -1,5 +1,5 @@
-<div>
-  <p>Filtrer</p>
+<div class="form__container">
+  <h1 class="important__title">Filtrer</h1>
   <form [formGroup]="filterForm" (ngSubmit)="filter()">
     <div>
       <label for="age">Age</label>
@@ -18,13 +18,15 @@
       </select>
     </div>
     <div>
-      <label for="Theme">theme</label>
+      <label for="Theme">Thème</label>
       <select id="theme" name="theme" formControlName="theme">
         <option *ngFor="let theme of themes" [ngValue]="theme.id">{{theme.nom}}</option>
       </select>
     </div>
 
-    <button type="submit" label="Filtrer" [disabled]="!filterForm.valid">Filtrer</button>
+    <a class="button__link">
+      <button class="button__btn-big" type="submit" [disabled]="!filterForm.valid">Filtrer</button>
+    </a>
   </form>
 </div>
 

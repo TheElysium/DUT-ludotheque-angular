@@ -10,7 +10,7 @@ import {Theme} from "../theme";
 @Component({
   selector: 'app-game-list',
   templateUrl: './game-list.component.html',
-  styleUrls: ['./game-list.component.css']
+  styleUrls: ['./game-list.component.css', '../app.component.css']
 })
 export class GameListComponent implements OnInit {
 
