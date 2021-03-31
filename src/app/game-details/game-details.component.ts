@@ -49,7 +49,7 @@ export class GameDetailsComponent implements OnInit {
       },
       (error) => {
         this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'L\'obtention des détails du jeu échouée'});
-        this.router.navigate(['/home']);
+        this.router.navigate(['/games']);
       }
     );
   }

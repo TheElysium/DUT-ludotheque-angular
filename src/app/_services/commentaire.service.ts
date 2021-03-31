@@ -3,7 +3,7 @@ import {Commentaire} from "../_models/commentaires";
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, map, tap} from "rxjs/operators";
-import {of} from "rxjs";
+import {Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class CommentaireService {
 
   constructor(private http: HttpClient) { }
 
-  postComment(note: number, commentaire: string, jeu_id: number, date_com: string){
+  postComment(note: number, commentaire: string, jeu_id: number, date_com: string): Observable<any>{
     const url = `${environment.apiUrl + '/commentaires'}`;
 
     const httpOptions = {
@@ -25,6 +25,8 @@ export class CommentaireService {
       "jeu_id": jeu_id,
       "date_com": date_com,
     }
+
+    console.log(data);
 
     return this.http.post<any>(url, data, httpOptions)
       .pipe(
