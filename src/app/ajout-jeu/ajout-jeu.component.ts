@@ -102,6 +102,9 @@ export class AjoutJeuComponent implements OnInit {
   onSubmit(): void {
     this.form = {...this.form, ...this.formulaire.value};
     if (this.formulaire.valid){
+      if(this.form === ''){
+        this.form = 'Non catégorisé';
+      }
       const registeredGame: Observable<any> = this.addGame(this.form.nom, this.form.description, this.form.theme, this.form.editeur, this.form.mecanique, this.form.url_media, this.form.regle, this.form.langue, this.form.nombre_de_joueurs, this.form.age, this.form.poids, this.form.duree);
       registeredGame.subscribe(value => {
         console.log('Added game : ' + value);
