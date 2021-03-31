@@ -34,9 +34,10 @@ import { FormUserComponent } from './form-user/form-user.component';
 import {RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { APP_BASE_HREF} from '@angular/common';
-import {EditorService} from "./editor.service";
-import {ThemeService} from "./theme.service";
+import {EditorService} from './editor.service';
+import {ThemeService} from './theme.service';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import {CustomDatePipe} from './custome.datepipe';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -54,7 +55,8 @@ registerLocaleData(localeFr, 'fr');
     FormUserComponent,
     HomeComponent,
     GameDetailsComponent,
-    EditUserComponent
+    EditUserComponent,
+    CustomDatePipe
   ],
   imports: [
     BrowserModule,

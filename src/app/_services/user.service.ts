@@ -5,6 +5,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {catchError, map, tap} from 'rxjs/operators';
 import {User} from '../_models/user';
+import {UserFull} from '../_models/UserFull';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -19,6 +20,13 @@ export class UserService {
 
   getProfile(): Observable<UserInfo> {
     return this.http.get<any>(environment.apiUrl + '/auth/user-profile', httpOptions)
+      .pipe(
+        map(rep => rep.data.item),
+        catchError(err => throwError(err))
+      );
+  }
+  getUser(id: number): Observable<UserFull> {
+    return this.http.get<any>(environment.apiUrl + `/users/${id}`, httpOptions)
       .pipe(
         map(rep => rep.data.item),
         catchError(err => throwError(err))
@@ -45,7 +53,7 @@ export class UserService {
   }
 
   updateUser(user: UserInfo): Observable<UserInfo> {
-    console.log("Update user ...");
+    console.log('Update user ...');
     const url = `${environment.apiUrl}/users/${user.id}`;
     return this.http.put<any>(url, user, httpOptions)
       .pipe(

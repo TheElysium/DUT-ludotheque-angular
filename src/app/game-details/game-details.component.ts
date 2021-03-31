@@ -31,6 +31,7 @@ export class GameDetailsComponent implements OnInit {
       game => {
         this.loading = true;
         this.game = game;
+        this.commentaireGame = game.commentaires;
         console.log(game);
       },
       (error) => {

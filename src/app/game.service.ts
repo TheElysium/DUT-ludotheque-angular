@@ -78,6 +78,8 @@ export class GameService {
       });
     });
   }
+
+
   getGameUser(userId: number): Game[]{
     let gameUser: Game[] = [];
 
@@ -85,6 +87,6 @@ export class GameService {
       (gameList: Game[]) => gameUser = gameList
     );
 
-    return gameUser.filter((game: Game) => game.user_id.id === userId);
+    return gameUser.filter((game: Game) => game.user.id === userId);
   }
 }

@@ -1,32 +1,14 @@
 import {Theme} from "./theme";
 import {Editor} from "./editor";
 import {User} from "./_models/user";
+import {Commentaire} from "./_models/commentaires";
 
 export class Game{
 
   constructor(public id: number, public nom: string, public  description: string, public  regles: string, public  langue: string,
               public url_media: string, public  age: number, public  poids: number, public  nombre_joueurs: number,
-              public categorie: string, public duree: string, public theme_id: Theme, public editeur_id: Editor, public user_id: User) {}
+              public categorie: string, public duree: string, public theme_id: Theme, public editeur_id: Editor, public commentaires: Commentaire[], public user: User) {}
 
-  //Create game from JSON
-  public static fromJson(json: Object): Game{
-    return new Game(
-      json['id'],
-      json['nom'],
-      json['description'],
-      json['regles'],
-      json['langue'],
-      json['url_media'],
-      json['age'],
-      json['poids'],
-      json['nombre_joueurs'],
-      json['categorie'],
-      json['duree'],
-      json['theme_id'],
-      json['editeur_id'],
-      json['user_id']
-    );
-  }
 }
 
 export enum Filter{
