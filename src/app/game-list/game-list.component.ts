@@ -41,8 +41,8 @@ export class GameListComponent implements OnInit {
 
   }
 
-  getGameList(sort?: string, filter?: string[]): void{
-    this.gameService.getGameList(sort, filter).subscribe(
+  getGameList(sort?: string, filters?: string[]): void{
+    this.gameService.getGameList(sort, filters).subscribe(
       (gameList: Game[]) => this.gameList = gameList
     );
   }
@@ -61,6 +61,8 @@ export class GameListComponent implements OnInit {
     console.log("Filtrage...");
     if(this.age.value != null){this.filterList.push(["age", this.age.value])}
     if(this.nombreJoueurs.value != null){this.filterList.push(["nbJoueurs", this.nombreJoueurs.value])}
+    if(this.editor.value != null) this.filterList.push(["editeur", this.editor.value]);
+    if(this.theme.value != null) this.filterList.push(["theme", this.theme.value]);
     //.....
 
     this.filterList.forEach(f => console.log(f));
@@ -68,21 +70,6 @@ export class GameListComponent implements OnInit {
   }
 
   sort(sortBy: string): void{
-    // console.log("Sorting ...");
-    // if(this.sortState == 0){
-    //   console.log("BY nom ...");
-    //   this.getGameList("nom", this.filterList);
-    // }
-    // else if(this.sortState == 1){
-    //   console.log("BY rien ...");
-    //   this.getGameList(undefined, this.filterList);
-    // }
-    // else if(this.sortState == 2){
-    //   console.log("BY note ...");
-    //   this.getGameList("note", this.filterList);
-    // }
-    //
-    // if(++this.sortState>2) this.sortState = 0;
     this.getGameList(sortBy,this.filterList);
   }
 

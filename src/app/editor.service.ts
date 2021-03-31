@@ -12,10 +12,14 @@ export class EditorService {
 
   constructor(private http: HttpClient) { }
 
-  getEditors(): Observable<Editor[]>{
+  getEditors(): Observable<Editor[]> {
     const url: string = 'http://localhost:8000/api/editeurs';
     console.log("Retreiving editors ...");
-    return this.http.get<any>(url, {headers: new HttpHeaders({'Content-Type': 'application/json'})})
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+    };
+
+    return this.http.get<any>(url, httpOptions)
       .pipe(
         map(res => res.data.item),
         catchError(err => {
