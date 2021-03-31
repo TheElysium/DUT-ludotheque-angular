@@ -34,6 +34,8 @@ import { FormUserComponent } from './form-user/form-user.component';
 import {RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { APP_BASE_HREF} from '@angular/common';
+import {EditorService} from "./editor.service";
+import {ThemeService} from "./theme.service";
 
 registerLocaleData(localeFr, 'fr');
 
@@ -49,7 +51,8 @@ registerLocaleData(localeFr, 'fr');
     GameListComponent,
     AjoutJeuComponent,
     FormUserComponent,
-    HomeComponent
+    HomeComponent,
+    GameDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,9 @@ registerLocaleData(localeFr, 'fr');
     AlertService,
     AuthentificationService,
     GameService,
-    {provide: APP_BASE_HREF, useValue : '/'}
+    {provide: APP_BASE_HREF, useValue : '/'},
+    EditorService,
+    ThemeService
   ],
   bootstrap: [AppComponent]
 })
