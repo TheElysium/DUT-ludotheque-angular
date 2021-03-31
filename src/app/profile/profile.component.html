@@ -1,4 +1,4 @@
-<h3>Profile d'un utilisateur</h3>
+<h3>Profil d'un utilisateur</h3>
 <br>
 <div *ngIf="!loading">
   <h2>{{user.pseudo}}</h2>
@@ -46,5 +46,11 @@
       {{game.id}}
     </li>
   </ul>
+  <ul>
+    <li *ngFor="let game of gameUser">
+      <app-game-card [game]="game"></app-game-card>
+    </li>
+  </ul>
+  <h2>Mon inventaire :</h2>
 </div>
 

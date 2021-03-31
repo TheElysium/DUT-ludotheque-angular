@@ -9,7 +9,7 @@ import {GameService} from '../game.service';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {AuthentificationService} from "../_services/authentification.service";
+import {AuthentificationService} from '../_services/authentification.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,9 +17,6 @@ import {AuthentificationService} from "../_services/authentification.service";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  constructor(private authService: AuthentificationService, private http: HttpClient, private userService: UserService, private messageService: MessageService, private router: Router, private gameService: GameService) {
-    this.loading = false;
-  }
   static httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -43,11 +40,17 @@ export class ProfileComponent implements OnInit {
     price: new FormControl('', [Validators.required, Validators.pattern('^\\b([1-9]|[1-9][0-9]|[1-2][0-4][1-9])$')])
   });
 
+  // tslint:disable-next-line:max-line-length
+  constructor(private authService: AuthentificationService, private http: HttpClient, private userService: UserService, private messageService: MessageService, private router: Router, private gameService: GameService) {
+    this.loading = false;
+  }
+
   ngOnInit(): void {
     this.loading = true;
     this.userService.getProfile().subscribe(
       user => {
         this.user = {...this.user, ...user};
+        this.gameUser = this.gameService.getGameUser(this.user.id);
         this.loading = false;
       },
       (err) => {

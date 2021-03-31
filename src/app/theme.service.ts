@@ -20,7 +20,7 @@ export class ThemeService {
 
     return this.http.get<any>(url, httpOptions)
       .pipe(
-        map(res => res.data.item),
+        map(res => res.data.items),
         catchError(err => {
           console.log('Erreur http : ', err);
           return of([]);
