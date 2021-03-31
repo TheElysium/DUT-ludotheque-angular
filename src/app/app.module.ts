@@ -51,7 +51,8 @@ registerLocaleData(localeFr, 'fr');
     GameListComponent,
     AjoutJeuComponent,
     FormUserComponent,
-    HomeComponent
+    HomeComponent,
+    GameDetailsComponent
   ],
   imports: [
     BrowserModule,
