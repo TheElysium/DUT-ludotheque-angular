@@ -323,3 +323,189 @@ footer div {
   color: var(--light);
   opacity: .3;
 }
+/* ------- ---------- ------- */
+/* ------- FORMULAIRE ------- */
+/* ------- ---------- ------- */
+
+form {
+  background: var(--background);
+
+  width: auto;
+  height: auto;
+
+  justify-content: center;
+
+  padding: 4rem 5rem;
+}
+.form__container {
+  display: grid !important;
+  gap: 1rem !important;
+  width: 30rem;
+  align-items:center;
+  justify-content:center;
+}
+
+.form__centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark);
+}
+
+form h1 {
+  color: var(--light);
+  margin: unset;
+}
+
+
+
+
+
+/* -------- inputs -------- */
+
+.input {
+  margin: 20px 0;
+  font-size: 18px;
+  color: var(--light);
+  padding: 5px 15px 10px 5px;
+
+  height: 25px;
+  min-width: 50px;
+
+  width: calc(100% - 20px);
+  transition: width .3s ease-out;
+  transition-delay: 250ms;
+
+  background: unset;
+  border: 0;
+  border-bottom: solid 2px var(--dark-accent);
+}
+
+.input:focus {
+  outline: none;
+  width: 75%;
+  transition: width .5s ease-out;
+  transition-delay: 150ms;
+}
+
+
+
+
+/* -------- inputs / placeholder -------- */
+
+input:focus::placeholder {
+  visibility: hidden;
+}
+
+input.input::placeholder {
+  color: var(--light);
+  opacity: .5;
+  font-size: 16px;
+  font-weight: 200;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------- ------ ------- */
+/* ------- BUTTON ------- */
+/* ------- ------ ------- */
+
+/*
+-la classe button__btn-big = celle avec le fond rouge
+-la classe button__btn = celle sans le fond rouge
+*/
+
+.button__link {
+  min-width: 190px;
+  width: 100%;
+}
+
+
+.button__btn-big {
+  background-color: var(--dark-accent);
+  transition: background .3s ease-out;
+}
+
+.button__btn-big:hover {
+  background: var(--light-accent);
+  transition: background .3s ease-out;
+}
+
+
+.button__btn {
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color .3s ease-out;
+}
+.button__btn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: background-color .3s ease-out;
+}
+
+
+.button__btn-big, .button__btn {
+  border: 0;
+  border-radius: 2rem;
+
+  cursor: pointer;
+  width: 100%;
+  color: var(--light);
+  padding: 20px 10px;
+
+  font-weight: 600;
+  font-size: 16px;
+}
+.button__btn-big:focus, .button__btn:focus {
+  outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------- ---------- ------- */
+/* ------- RESPONSIVE ------- */
+/* ------- ---------- ------- */
+
+
+
+@media screen and (max-width: 650px) {
+  .form__container {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  .input {
+    min-width: 190px;
+  }
+
+  .button__link {
+    min-width: 210px;
+  }
+
+  form {
+    max-width: 20rem;
+    width: 100%;
+    padding: 3rem 2rem;
+  }
+
+}
