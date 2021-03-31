@@ -123,7 +123,6 @@ export class FormUserComponent implements OnInit {
   // (https://www.cril.univ-artois.fr/~hemery/enseignement/An20-21/projetTutS4/)
 
 
-  //C'est quoi ça ?????????????????????????????????????????? Kubik t mort passe par le user.service bordel
   register(prenom: string, nom: string, pseudo: string, email: string, password: string): Observable<any>{
     // tslint:disable-next-line:max-line-length
     return this.http.post<any>(`${environment.apiUrl}/auth/register`, {prenom, nom, pseudo, email, password}, FormUserComponent.httpOptions);
@@ -135,7 +134,7 @@ export class FormUserComponent implements OnInit {
   }
 
   fillForm() {
-    console.log("Fill form");
+    console.log('Fill form');
     this.formulaire.patchValue({
       nom: this.user.nom,
       prenom: this.user.prenom,

@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit {
     game: new FormControl('', [Validators.required]),
     storage: new FormControl('', [Validators.required]),
     date: new FormControl('', [Validators.required]),
-    price: new FormControl('', [Validators.required, Validators.pattern('^\\b([1-9]|[1-9][0-9]|[1-2][0-4][1-9])$')])
+    price: new FormControl('', [Validators.required, Validators.pattern('^\\b([1-9]|[1-9][0-9]|[1-2][0-4][0-9])$')])
   });
 
   // tslint:disable-next-line:max-line-length
