@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import {Observable, of} from "rxjs";
 import {Game} from "./game";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {catchError, find, map} from "rxjs/operators";
+import {catchError, find, map, tap} from "rxjs/operators";
 import {Sort, Filter} from "./game"
+import {environment} from "../environments/environment";
+import {Commentaire} from "./_models/commentaires";
 
 @Injectable({
   providedIn: 'root'
@@ -88,5 +90,23 @@ export class GameService {
     );
 
     return gameUser.filter((game: Game) => game.user.id === userId);
+  }
+
+  postComment(comment: Commentaire){
+    const url = `${environment.apiUrl + '/commentaires'}`;
+    console.log(url);
+    // tslint:disable-next-line:no-shadowed-variable
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+    return this.http.post<any>(url, comment, httpOptions)
+      .pipe(
+        map(res => res.data.item),
+        tap(body => console.log(body)),
+        catchError(err => {
+          console.log('Erreur http : ', err);
+          return of(undefined);
+        })
+      );
   }
 }
