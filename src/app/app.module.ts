@@ -33,6 +33,8 @@ import { AjoutJeuComponent } from './ajout-jeu/ajout-jeu.component';
 import { FormUserComponent } from './form-user/form-user.component';
 import {Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import {EditorService} from "./editor.service";
+import {ThemeService} from "./theme.service";
 
 
 registerLocaleData(localeFr, 'fr');
@@ -71,6 +73,8 @@ registerLocaleData(localeFr, 'fr');
     AlertService,
     AuthentificationService,
     GameService,
+    EditorService,
+    ThemeService,
   ],
   bootstrap: [AppComponent]
 })

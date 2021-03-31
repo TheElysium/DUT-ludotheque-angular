@@ -1,8 +1,11 @@
- export class Game{
+import {Theme} from "./theme";
+import {Editor} from "./editor";
+
+export class Game{
 
   constructor(public id: number,public nom: string,public  description: string,public  regles: string,public  langue: string,
               public url_media: string, public  age: number,public  poids: number,public  nombre_joueurs: number,
-              public categorie: string, public duree: string, public theme_id: theme_id, public editeur_id: editeur_id) {}
+              public categorie: string, public duree: string, public theme_id: Theme, public editeur_id: Editor) {}
 
   //Create game from JSON
   public static fromJson(json: Object): Game{
@@ -38,10 +41,6 @@ export enum Sort{
   nom,
 }
 
- export interface theme_id{
-  id: number;
-  nom: string;
-  }
 
  export interface tarif{
    prixMax: number;
@@ -49,10 +48,6 @@ export enum Sort{
    prixMoyen: number;
  }
 
- export interface editeur_id{
-  id: number;
-  nom: string;
- }
 
  export interface statistiques{
   noteMax: number;

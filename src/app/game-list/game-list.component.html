@@ -3,21 +3,37 @@
   <form [formGroup]="filterForm" (ngSubmit)="filter()">
     <div>
       <label for="age">Age</label>
-      <input type="number" id="age" formControlName="age" aria-describedby="age-help" pInputTextarea>
+      <input type="number" id="age" formControlName="age" aria-describedby="age-help">
       <small *ngIf="age.invalid && age.touched"  id="age-help" class="p-error">Superieur à 0</small>
     </div>
     <div>
       <label for="nombreJoueurs">Nombre de joueurs</label>
-      <input type="number" id="nombreJoueurs" formControlName="nombreJoueurs" aria-describedby="nombreJoueurs-help" pInputTextarea>
+      <input type="number" id="nombreJoueurs" formControlName="nombreJoueurs" aria-describedby="nombreJoueurs-help">
       <small *ngIf="nombreJoueurs.invalid && nombreJoueurs.touched"  id="nombreJoueurs-help" class="p-error">Superieur à 0</small>
     </div>
+    <div>
+      <label for="editor">Editeur</label>
+      <select id="editor" name="editor">
+        <option *ngFor="let editor of editors" value="{{editor.id}}">{{editor.nom}}</option>
+      </select>
+    </div>
+    <div>
+      <label for="theme">Thème</label>
+      <select id="theme" name="theme">
+        <option *ngFor="let theme of themes" value="{{theme.id}}">{{theme.nom}}</option>
+      </select>
+    </div>
+
     <button type="submit" label="Filtrer" [disabled]="!filterForm.valid">Filtrer</button>
   </form>
 </div>
 
 <div>
-  <button (click)="sort()">Sort</button>
-
+  <label for="tri">Trier</label>
+  <select id="tri" name="tri">
+    <option value="nom" (click)="sort('nom')">Nom</option>
+    <option value="note" (click)="sort('note')">Note</option>
+  </select>
 </div>
 
 <ul>
