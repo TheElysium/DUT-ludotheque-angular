@@ -82,14 +82,14 @@ export class GameListComponent implements OnInit {
     this.filterList.forEach(f => console.log(f));
     this.gameList.forEach(f => console.log(f));
 
-    //Filtrage et tri coté API mais ne permet pas le filtrage multiple + le tri
+    //Filtrage et coté API mais ne permet pas le filtrage multiple
     //this.getGameList(null, this.filterList);
 
   }
 
   sort(sortBy: string): void{
-    //this.getGameList(sortBy,this.filterList);
-    //this.filter();
+    //Tri coté API mais ne permet pas de faire un tri sur une liste filtrée
+    //this.getGameList(sortBy);
 
     if(sortBy === "nom"){
       this.gameList = this.gameList.sort((a: Game, b: Game) => a.nom > b.nom ? 1:-1);
