@@ -59,7 +59,7 @@ export class GameListComponent implements OnInit {
     console.log("Filtrage...");
     // this.filterList = [];
 
-    console.log(this.editor.value);
+    console.log(this.theme.value);
     if(this.age.value != null){
       console.log("filtrage par age");
       // this.filterList.push(["age", this.age.value])

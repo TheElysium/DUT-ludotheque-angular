@@ -18,9 +18,9 @@
       </select>
     </div>
     <div>
-      <label for="theme">Thème</label>
+      <label for="Theme">theme</label>
       <select id="theme" name="theme" formControlName="theme">
-        <option *ngFor="let theme of themes" value="{{theme.id}}">{{theme.nom}}</option>
+        <option *ngFor="let theme of themes" [ngValue]="theme.id">{{theme.nom}}</option>
       </select>
     </div>
 
