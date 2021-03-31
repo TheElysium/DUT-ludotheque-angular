@@ -9,6 +9,7 @@ import {User} from "../_models/user";
 import {UserService} from "../_services/user.service";
 import {AuthentificationService} from "../_services/authentification.service";
 import {DatePipe} from "@angular/common";
+import {CommentaireService} from "../_services/commentaire.service";
 
 @Component({
   selector: 'app-game-details',
@@ -30,7 +31,8 @@ export class GameDetailsComponent implements OnInit {
     note: new FormControl(undefined, [Validators.required, Validators.min(0), Validators.max(5)]),
   })
 
-  constructor(public route: ActivatedRoute, public gameService: GameService, public messageService: MessageService, public authService: AuthentificationService,public router: Router) {
+  constructor(public route: ActivatedRoute, public gameService: GameService, public messageService: MessageService, public commentaireService: CommentaireService, public datepipe: DatePipe
+  , public router: Router) {
 
   }
 
@@ -53,19 +55,11 @@ export class GameDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("Submit comment...");
-    const datePipe: DatePipe = new DatePipe('yyyy-dd-mm hh:mm:ss');
+    let date = new Date();
+    let dateString = this.datepipe.transform(date, 'yyyy-dd-mm hh:mm:ss')
     if (this.formulaire.valid) {
-      let c: Commentaire = {
-        id: this.commentaireGame[this.commentaireGame.length-1].id+1,
-        note: this.note.value,
-        commentaire: this.commentaire.value,
-        jeu_id: this.gameId,
-        date_com: datePipe.transform(new Date()),
-        user: this.authService.userValue,
-      }
-      this.gameService.postComment(c);
-      this.messageService.add({summary: 'Reussite', detail: 'Votre commentaire a bien été posté !'});
+      console.log("Submit comment...");
+      this.commentaireService.postComment(this.note.value, this.commentaire.value, this.gameId, dateString);
     }
   }
 

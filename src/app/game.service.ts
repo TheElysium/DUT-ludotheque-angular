@@ -91,22 +91,4 @@ export class GameService {
 
     return gameUser.filter((game: Game) => game.user.id === userId);
   }
-
-  postComment(comment: Commentaire){
-    const url = `${environment.apiUrl + '/commentaires'}`;
-    console.log(url);
-    // tslint:disable-next-line:no-shadowed-variable
-    const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-    };
-    return this.http.post<any>(url, comment, httpOptions)
-      .pipe(
-        map(res => res.data.item),
-        tap(body => console.log(body)),
-        catchError(err => {
-          console.log('Erreur http : ', err);
-          return of(undefined);
-        })
-      );
-  }
 }

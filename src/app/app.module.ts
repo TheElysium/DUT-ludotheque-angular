@@ -11,7 +11,7 @@ import {AuthentificationService} from './_services/authentification.service';
 import {MessagesModule} from 'primeng/messages';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
-import {registerLocaleData} from '@angular/common';
+import {DatePipe, registerLocaleData} from '@angular/common';
 import {MomentModule} from 'ngx-moment';
 import 'moment/locale/fr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -81,7 +81,8 @@ registerLocaleData(localeFr, 'fr');
     GameService,
     {provide: APP_BASE_HREF, useValue : '/'},
     EditorService,
-    ThemeService
+    ThemeService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
