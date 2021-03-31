@@ -1,8 +1,10 @@
-import {Theme} from "./theme";
-import {Editor} from "./editor";
-import {User} from "./_models/user";
+import {Theme} from './theme';
+import {Editor} from './editor';
+import {User} from './_models/user';
+import {UserInfo} from './_models/user-info';
 
 export class Game{
+
 
   constructor(public id: number, public nom: string, public  description: string, public  regles: string, public  langue: string,
               public url_media: string, public  age: number, public  poids: number, public  nombre_joueurs: number,
@@ -24,7 +26,8 @@ export class Game{
       json['duree'],
       json['theme_id'],
       json['editeur_id'],
-      json['user_id']
+      json['user_id'],
+
     );
   }
 }

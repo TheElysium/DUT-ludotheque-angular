@@ -10,6 +10,8 @@ import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/form
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthentificationService} from "../_services/authentification.service";
+import {UserFull} from "../_models/UserFull";
+import {GameFull} from "../_models/gameFull";
 
 @Component({
   selector: 'app-profile',
@@ -32,7 +34,8 @@ export class ProfileComponent implements OnInit {
   loading: boolean;
   user: UserInfo;
   games: Game[];
-  gameUser: Game[];
+  userFull: UserFull;
+  gameUser: GameFull[];
   formulaire = new FormGroup({
     game: new FormControl('', [Validators.required]),
     storage: new FormControl('', [Validators.required]),
@@ -50,7 +53,6 @@ export class ProfileComponent implements OnInit {
     this.userService.getProfile().subscribe(
       user => {
         this.user = {...this.user, ...user};
-        this.gameUser = this.gameService.getGameUser(this.user.id);
         this.loading = false;
       },
       (err) => {
@@ -59,7 +61,26 @@ export class ProfileComponent implements OnInit {
         this.router.navigateByUrl('/');
       }
     );
+
+
+    this.userService.getUser(this.authService.userValue.id).subscribe(
+      user => {
+        this.userFull = {...this.userFull, ...user};;
+        this.gameUser = this.userFull.jeux;
+        this.loading = false;
+        console.log('user : ' + user);
+        console.log('userFull: ' + this.userFull);
+
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+
+    console.log(this.userFull);
     this.getGameList();
+    console.log('userFull: ' + this.userFull);
+
   }
   get game(): AbstractControl {
     return this.formulaire.get('game');
