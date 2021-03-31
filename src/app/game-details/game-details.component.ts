@@ -3,6 +3,7 @@ import {Game} from '../game';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GameService} from '../game.service';
 import {MessageService} from 'primeng/api';
+import {Commentaire} from "../_models/commentaires";
 
 @Component({
   selector: 'app-game-details',
@@ -12,6 +13,7 @@ import {MessageService} from 'primeng/api';
 export class GameDetailsComponent implements OnInit {
   game: Game;
   gameId: number;
+  commentaireGame: Commentaire[];
 
   mechanics = ['meca1', 'meca2']; // TODO get mechanics from the API
 
@@ -36,8 +38,6 @@ export class GameDetailsComponent implements OnInit {
         this.router.navigate(['/home']);
       }
     );
-    this
   }
-
 
 }
