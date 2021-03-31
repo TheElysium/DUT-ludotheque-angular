@@ -58,13 +58,22 @@ header {
 .header__logo {
   width: 10rem;
   padding: 5px;
+  margin-right: 3vw;
 }
 
+.header-left{
+
+}
 
 
 /* ----------- HEADER / RIGHT -----------*/
 
 
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
 
 .header-right {
   display: flex;
