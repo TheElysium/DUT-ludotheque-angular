@@ -31,7 +31,6 @@ export class FormUserComponent implements OnInit {
       pwd: new FormGroup({
         password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]),
         confirmPassword: new FormControl('', [Validators.required]),
-        // @ts-ignore
       }, [MesValidateurs.mustMatch])
     },
   );
