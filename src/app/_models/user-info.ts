@@ -1,3 +1,5 @@
+import {Game} from '../game';
+
 export interface UserInfo {
   id: number;
   nom: string;
