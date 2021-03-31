@@ -13,13 +13,13 @@
     </div>
     <div>
       <label for="editor">Editeur</label>
-      <select id="editor" name="editor">
-        <option *ngFor="let editor of editors" value="{{editor.id}}">{{editor.nom}}</option>
+      <select id="editor" name="editor" formControlName="editeur">
+        <option *ngFor="let editor of editors" [ngValue]="editor.id">{{editor.nom}}</option>
       </select>
     </div>
     <div>
       <label for="theme">Thème</label>
-      <select id="theme" name="theme">
+      <select id="theme" name="theme" formControlName="theme">
         <option *ngFor="let theme of themes" value="{{theme.id}}">{{theme.nom}}</option>
       </select>
     </div>

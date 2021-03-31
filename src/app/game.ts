@@ -4,8 +4,8 @@ import {User} from "./_models/user";
 
 export class Game{
 
-  constructor(public id: number,public nom: string,public  description: string,public  regles: string,public  langue: string,
-              public url_media: string, public  age: number,public  poids: number,public  nombre_joueurs: number,
+  constructor(public id: number, public nom: string, public  description: string, public  regles: string, public  langue: string,
+              public url_media: string, public  age: number, public  poids: number, public  nombre_joueurs: number,
               public categorie: string, public duree: string, public theme_id: Theme, public editeur_id: Editor, public user_id: User) {}
 
   //Create game from JSON

@@ -23,7 +23,7 @@ export class GameListComponent implements OnInit {
 
   filterForm: FormGroup = new FormGroup({
     age: new FormControl(undefined, [Validators.min(0)]),
-    nombreJoueurs: new FormControl(undefined),
+    nombreJoueurs: new FormControl(undefined, [Validators.min(0)]),
     theme: new FormControl(undefined),
     editeur: new FormControl(undefined),
   });
@@ -37,8 +37,6 @@ export class GameListComponent implements OnInit {
     this.getEditors();
     this.sortState = 0;
     this.filterList = [];
-    console.log(this.editors);
-
   }
 
   getGameList(sort?: string, filters?: string[]): void{
@@ -59,28 +57,31 @@ export class GameListComponent implements OnInit {
 
   filter(): void{
     console.log("Filtrage...");
-    this.filterList = [];
+    // this.filterList = [];
 
+    console.log(this.editor.value);
     if(this.age.value != null){
-      this.filterList.push(["age", this.age.value])
+      console.log("filtrage par age");
+      // this.filterList.push(["age", this.age.value])
       this.gameList = this.gameList.filter((game:Game) => game.age <= this.age.value)
     }
     if(this.nombreJoueurs.value != null){
-      this.filterList.push(["nbJoueurs", this.nombreJoueurs.value])
+      console.log("filtrage par nbJoueurs");
+      // this.filterList.push(["nbJoueurs", this.nombreJoueurs.value])
       this.gameList = this.gameList.filter((game:Game) => game.nombre_joueurs <= this.nombreJoueurs.value)
     }
-    // if(this.editor.value != null) {
-    //   this.filterList.push(["editeur", this.editor.value]);
-    //   this.gameList = this.gameList.filter((game:Game) => game.editor <= this.editor.value)
-    // }
-    // if(this.theme.value != null) {
-    //   this.filterList.push(["theme", this.theme.value]);
-    //   this.gameList = this.gameList.filter((game:Game) => game.theme <= this.theme.value)
-    // }
-    //.....
+    if(this.editor.value != null) {
+      console.log("filtrage par editeur");
+      // this.filterList.push(["editeur", this.editor.value]);
+      this.gameList = this.gameList.filter((game:Game) => game.editeur_id.id === this.editor.value)
+    }
+    if(this.theme.value != null) {
+      console.log("filtrage par theme");
+      // this.filterList.push(["theme", this.theme.value]);
+      this.gameList = this.gameList.filter((game:Game) => game.theme_id.id === this.theme.value)
+    }
+    // .....
 
-    this.filterList.forEach(f => console.log(f));
-    this.gameList.forEach(f => console.log(f));
 
     //Filtrage et coté API mais ne permet pas le filtrage multiple
     //this.getGameList(null, this.filterList);
@@ -112,7 +113,7 @@ export class GameListComponent implements OnInit {
   }
 
   get editor(){
-    return this.filterForm.get('editor');
+    return this.filterForm.get('editeur');
   }
 
 
