@@ -59,7 +59,7 @@ export class GameDetailsComponent implements OnInit {
     let dateString = this.datepipe.transform(date, 'yyyy-dd-mm hh:mm:ss')
     if (this.formulaire.valid) {
       console.log("Submit comment...");
-      this.commentaireService.postComment(this.note.value, this.commentaire.value, this.gameId, dateString);
+      this.commentaireService.postComment(this.note.value, this.commentaire.value, this.gameId, dateString).subscribe(resp => console.log(resp));
     }
   }
 

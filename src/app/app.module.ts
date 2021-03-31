@@ -38,6 +38,7 @@ import {EditorService} from './editor.service';
 import {ThemeService} from './theme.service';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import {CustomDatePipe} from './custome.datepipe';
+import {CommentaireService} from "./_services/commentaire.service";
 
 registerLocaleData(localeFr, 'fr');
 
@@ -56,7 +57,7 @@ registerLocaleData(localeFr, 'fr');
     HomeComponent,
     GameDetailsComponent,
     EditUserComponent,
-    CustomDatePipe
+    CustomDatePipe,
   ],
   imports: [
     BrowserModule,
@@ -82,7 +83,8 @@ registerLocaleData(localeFr, 'fr');
     {provide: APP_BASE_HREF, useValue : '/'},
     EditorService,
     ThemeService,
-    DatePipe
+    DatePipe,
+    CommentaireService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,14 +1,14 @@
 <div class="form__container">
-  <h1 class="important__title">Filtrer</h1>
+  <h2 class="important__title">Filtrer</h2>
   <form [formGroup]="filterForm" (ngSubmit)="filter()">
     <div>
       <label for="age">Age</label>
-      <input type="number" id="age" formControlName="age" aria-describedby="age-help">
+      <input type="number" id="age" placeholder="Age" formControlName="age" aria-describedby="age-help">
       <small *ngIf="age.invalid && age.touched"  id="age-help" class="p-error">Superieur à 0</small>
     </div>
     <div>
       <label for="nombreJoueurs">Nombre de joueurs</label>
-      <input type="number" id="nombreJoueurs" formControlName="nombreJoueurs" aria-describedby="nombreJoueurs-help">
+      <input type="number" id="nombreJoueurs" placeholder="Nombre de joueurs" formControlName="nombreJoueurs" aria-describedby="nombreJoueurs-help">
       <small *ngIf="nombreJoueurs.invalid && nombreJoueurs.touched"  id="nombreJoueurs-help" class="p-error">Superieur à 0</small>
     </div>
     <div>
@@ -23,7 +23,6 @@
         <option *ngFor="let theme of themes" [ngValue]="theme.id">{{theme.nom}}</option>
       </select>
     </div>
-
     <a class="button__link">
       <button class="button__btn-big" type="submit" [disabled]="!filterForm.valid">Filtrer</button>
     </a>
@@ -31,12 +30,13 @@
 </div>
 
 <div>
-  <label for="tri">Trier</label>
+  <h2>Trier</h2>
   <select id="tri" name="tri">
     <option value="nom" (click)="sort('nom')">Nom</option>
     <option value="note" (click)="sort('note')">Note</option>
   </select>
 </div>
+
 
 <div class="homepage__card-container-inner">
   <app-game-card *ngFor="let game of gameList" [game]="game"></app-game-card>

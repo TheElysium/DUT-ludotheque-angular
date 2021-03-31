@@ -17,7 +17,6 @@ export class GameService {
 
   getGameList(sort?: string, filters? : string[]): Observable<Game[]>{
     const url: string = 'http://localhost:8000/api/jeux';
-
     let searchParams = new HttpParams();
 
     if(sort != undefined) {
@@ -27,9 +26,10 @@ export class GameService {
     if(filters != undefined){
       if(filters.length != 0) filters.forEach(couple => searchParams = searchParams.append(couple[0], couple[1]))
     }
-
-
-    return this.http.get<any>(url, {headers: new HttpHeaders({'Content-Type': 'application/json'}), params: searchParams })
+    return this.http.get<any>(url, {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      params: searchParams
+    })
       .pipe(
         map(res => res.data.item),
         catchError(err => {
