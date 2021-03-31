@@ -4,6 +4,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {GameService} from '../game.service';
 import {MessageService} from 'primeng/api';
 import {Commentaire} from "../_models/commentaires";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {User} from "../_models/user";
+import {UserService} from "../_services/user.service";
+import {AuthentificationService} from "../_services/authentification.service";
+import {DatePipe} from "@angular/common";
+import {CommentaireService} from "../_services/commentaire.service";
 
 @Component({
   selector: 'app-game-details',
@@ -19,7 +25,14 @@ export class GameDetailsComponent implements OnInit {
 
   loading = false;
 
-  constructor(public route: ActivatedRoute, public gameService: GameService, public messageService: MessageService, public router: Router) {
+
+  formulaire: FormGroup = new FormGroup({
+    commentaire: new FormControl(undefined, [Validators.required]),
+    note: new FormControl(undefined, [Validators.required, Validators.min(0), Validators.max(5)]),
+  })
+
+  constructor(public route: ActivatedRoute, public gameService: GameService, public messageService: MessageService, public commentaireService: CommentaireService, public datepipe: DatePipe
+  , public router: Router) {
 
   }
 
@@ -36,9 +49,25 @@ export class GameDetailsComponent implements OnInit {
       },
       (error) => {
         this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'L\'obtention des détails du jeu échouée'});
-        this.router.navigate(['/home']);
+        this.router.navigate(['/games']);
       }
     );
   }
 
+  onSubmit() {
+    let date = new Date();
+    let dateString = this.datepipe.transform(date, 'yyyy-dd-mm hh:mm:ss')
+    if (this.formulaire.valid) {
+      console.log("Submit comment...");
+      this.commentaireService.postComment(this.note.value, this.commentaire.value, this.gameId, dateString);
+    }
+  }
+
+  get commentaire(){
+    return this.formulaire.get('commentaire');
+  }
+
+  get note(){
+    return this.formulaire.get('note');
+  }
 }

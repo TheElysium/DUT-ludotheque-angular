@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import {Observable, of} from "rxjs";
 import {Game} from "./game";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {catchError, find, map} from "rxjs/operators";
+import {catchError, find, map, tap} from "rxjs/operators";
 import {Sort, Filter} from "./game"
+import {environment} from "../environments/environment";
+import {Commentaire} from "./_models/commentaires";
 
 @Injectable({
   providedIn: 'root'
