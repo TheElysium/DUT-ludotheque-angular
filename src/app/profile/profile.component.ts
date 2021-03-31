@@ -4,6 +4,8 @@ import {UserInfo} from '../_models/user-info';
 import {Observable} from 'rxjs';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
+import {Game} from '../game';
+import {GameService} from '../game.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,8 +16,9 @@ export class ProfileComponent implements OnInit {
 
   loading: boolean;
   user: UserInfo;
+  gameUser: Game[];
 
-  constructor(private userService: UserService, private messageService: MessageService, private router: Router) {
+  constructor(private userService: UserService, private messageService: MessageService, private router: Router, private gameService: GameService) {
     this.loading = false;
   }
 
@@ -32,6 +35,7 @@ export class ProfileComponent implements OnInit {
         this.router.navigateByUrl('/');
       }
     );
+    this.gameUser = this.gameService.getGameUser(this.user.id);
   }
 
 }

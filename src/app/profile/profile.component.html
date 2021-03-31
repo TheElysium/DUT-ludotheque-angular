@@ -6,4 +6,10 @@
   <p>{{user.email}}</p>
   <p>Crée : {{user.created_at | amDateFormat:'LL'}} </p>
   <p>Modifié : {{user.updated_at | amDateFormat:'LL'}} </p>
+  <ul>
+    <li *ngFor="let game of gameUser">
+      <app-game-card [game]="game"></app-game-card>
+    </li>
+  </ul>
 </div>
+
