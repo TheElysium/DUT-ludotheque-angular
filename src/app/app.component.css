@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 /* FONT / MONTSERRAT
 font-family: 'Montserrat', sans-serif;
@@ -15,6 +15,9 @@ font-family: 'Montserrat', sans-serif;
 
   --light-accent: #fe6e6e; /* Links / Buttons */
   --dark-accent: #db423d; /* Links / Buttons */
+
+  --dark-accent-disabled: #d7504b; /* Links / disabled Buttons */
+
 
   --light: #ffffff; /* Used for Sections */
   --dark: #292929; /* Used for Sections */
@@ -323,6 +326,21 @@ footer div {
   color: var(--light);
   opacity: .3;
 }
+
+.black__background{
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  background-color: var(--background);
+}
+
+h1.important__title{
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
 /* ------- ---------- ------- */
 /* ------- FORMULAIRE ------- */
 /* ------- ---------- ------- */
@@ -349,7 +367,6 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--dark);
 }
 
 form h1 {
@@ -370,7 +387,7 @@ form h1 {
   padding: 5px 15px 10px 5px;
 
   height: 25px;
-  min-width: 50px;
+  min-width: 28rem;
 
   width: calc(100% - 20px);
   transition: width .3s ease-out;
@@ -466,6 +483,10 @@ input.input::placeholder {
 }
 .button__btn-big:focus, .button__btn:focus {
   outline: none;
+}
+
+.button__btn-big:disabled{
+  background-color: var(--dark-accent-disabled);
 }
 
 

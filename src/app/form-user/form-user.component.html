@@ -1,5 +1,8 @@
 <!--suppress ALL -->
-<div class="form__centered">
+<div class="black__background">
+  <h1 class="important__title">Inscription</h1>
+  <div class="form__centered">
+
   <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
       <div class="p-fluid forms-grid" style="margin: 1em 0">
       <div class="p-field">
@@ -78,7 +81,7 @@
       </div>
         <div class="p-field">
           <label for="confirmPassword">Confirmation du mot de passe</label>
-          <input class="input" type="password" id="confirmPassword" placeholder="Confirmation du mot de passe" formControlName="confirmPassword">
+          <input class="input" type="password" id="confirmPassword" placeholder="Mot de passe" formControlName="confirmPassword">
           <small *ngIf="confirmPassword.invalid && confirmPassword.touched && password.touched && !password.invalid"  class="p-error">Vous devez confirmer votre mot passe</small>
         </div>
           <div *ngIf="pwd.invalid && pwd.touched && !confirmPassword.invalid">
@@ -90,7 +93,9 @@
           <button class="button__btn-big" type="submit" [disabled]="!formulaire.valid">S'enregistrer</button>
         </a>  </div>
   </form>
+  </div>
 </div>
-  <ng-template pTemplate="footer">
+
+<ng-template pTemplate="footer">
       Saisir les informations d'un utilisateur
     </ng-template>

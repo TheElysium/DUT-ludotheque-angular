@@ -1,23 +1,30 @@
-<div class="form__centered">
-  <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
-    <div class="form__container">
-      Email :<input class="input" type="email" name="email" formControlName="email" placeholder="Email"><br>
-      <ng-container *ngIf="email.errors?.email">
-        <app-error-message [message]="'Email invalide !'"></app-error-message>
-      </ng-container>
+<div class="black__background">
+  <h1 class="important__title">Connexion</h1>
+  <div class="form__centered">
+    <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+      <div class="form__container">
+        Email :<input class="input" type="email" name="email" formControlName="email" placeholder="Email"><br>
+        <ng-container *ngIf="email.errors?.email">
+          <app-error-message [message]="'Email invalide !'"></app-error-message>
+        </ng-container>
 
-      <ng-container *ngIf="email.errors?.required">
-        <app-error-message [message]="'Email requise !'"></app-error-message>
-      </ng-container>
+        <ng-container *ngIf="email.errors?.required">
+          <app-error-message [message]="'Email requise !'"></app-error-message>
+        </ng-container>
 
-      Mot de passe : <input class="input" type="password" formControlName="password" placeholder="Mot de passe"><br>
-      <ng-container *ngIf="password.errors?.required">
-        <app-error-message [message]="'Mot de passe requis !'"></app-error-message>
-      </ng-container>
-    </div>
-    <a class="button__link">
-      <button class="button__btn-big" type="submit" [disabled]="!formulaire.valid">Connexion</button>
-    </a>
-  </form>
+        Mot de passe : <input class="input" type="password" formControlName="password" placeholder="Mot de passe"><br>
+        <ng-container *ngIf="password.errors?.required">
+          <app-error-message [message]="'Mot de passe requis !'"></app-error-message>
+        </ng-container>
+      </div>
+      <a class="button__link">
+        <button class="button__btn-big" type="submit" [disabled]="!formulaire.valid">Connexion</button>
+      </a>
+      <a class="button__link">
+        <button class="button__btn" type="submit" style="margin-top: 3vh;">Inscription</button>
+      </a>
+    </form>
 
+  </div>
 </div>
+
