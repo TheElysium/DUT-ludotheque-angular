@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 /* FONT / MONTSERRAT
 font-family: 'Montserrat', sans-serif;
@@ -15,6 +15,9 @@ font-family: 'Montserrat', sans-serif;
 
   --light-accent: #fe6e6e; /* Links / Buttons */
   --dark-accent: #db423d; /* Links / Buttons */
+
+  --dark-accent-disabled: #d7504b; /* Links / disabled Buttons */
+
 
   --light: #ffffff; /* Used for Sections */
   --dark: #292929; /* Used for Sections */
@@ -322,4 +325,208 @@ footer div {
 
   color: var(--light);
   opacity: .3;
+}
+
+.black__background{
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  background-color: var(--background);
+}
+
+h1.important__title{
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+/* ------- ---------- ------- */
+/* ------- FORMULAIRE ------- */
+/* ------- ---------- ------- */
+
+form {
+  background: var(--background);
+
+  width: auto;
+  height: auto;
+
+  justify-content: center;
+
+  padding: 4rem 5rem;
+}
+.form__container {
+  display: grid !important;
+  gap: 1rem !important;
+  width: 30rem;
+  align-items:center;
+  justify-content:center;
+}
+
+.form__centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form h1 {
+  color: var(--light);
+  margin: unset;
+}
+
+
+
+
+
+/* -------- inputs -------- */
+
+.input {
+  margin: 20px 0;
+  font-size: 18px;
+  color: var(--light);
+  padding: 5px 15px 10px 5px;
+
+  height: 25px;
+  min-width: 28rem;
+
+  width: calc(100% - 20px);
+  transition: width .3s ease-out;
+  transition-delay: 250ms;
+
+  background: unset;
+  border: 0;
+  border-bottom: solid 2px var(--dark-accent);
+}
+
+.input:focus {
+  outline: none;
+  width: 75%;
+  transition: width .5s ease-out;
+  transition-delay: 150ms;
+}
+
+
+
+
+/* -------- inputs / placeholder -------- */
+
+input:focus::placeholder {
+  visibility: hidden;
+}
+
+input.input::placeholder {
+  color: var(--light);
+  opacity: .5;
+  font-size: 16px;
+  font-weight: 200;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------- ------ ------- */
+/* ------- BUTTON ------- */
+/* ------- ------ ------- */
+
+/*
+-la classe button__btn-big = celle avec le fond rouge
+-la classe button__btn = celle sans le fond rouge
+*/
+
+.button__link {
+  min-width: 190px;
+  width: 100%;
+}
+
+
+.button__btn-big {
+  background-color: var(--dark-accent);
+  transition: background .3s ease-out;
+}
+
+.button__btn-big:hover {
+  background: var(--light-accent);
+  transition: background .3s ease-out;
+}
+
+
+.button__btn {
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color .3s ease-out;
+}
+.button__btn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: background-color .3s ease-out;
+}
+
+
+.button__btn-big, .button__btn {
+  border: 0;
+  border-radius: 2rem;
+
+  cursor: pointer;
+  width: 100%;
+  color: var(--light);
+  padding: 20px 10px;
+
+  font-weight: 600;
+  font-size: 16px;
+}
+.button__btn-big:focus, .button__btn:focus {
+  outline: none;
+}
+
+.button__btn-big:disabled{
+  background-color: var(--dark-accent-disabled);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------- ---------- ------- */
+/* ------- RESPONSIVE ------- */
+/* ------- ---------- ------- */
+
+
+
+@media screen and (max-width: 650px) {
+  .form__container {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  .input {
+    min-width: 190px;
+  }
+
+  .button__link {
+    min-width: 210px;
+  }
+
+  form {
+    max-width: 20rem;
+    width: 100%;
+    padding: 3rem 2rem;
+  }
+
 }

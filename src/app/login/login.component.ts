@@ -10,7 +10,7 @@ import {GameService} from "../game.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css', '../app.component.css']
 })
 export class LoginComponent implements OnInit {
   form: any = {

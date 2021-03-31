@@ -13,7 +13,7 @@ import {UserInfo} from "../_models/user-info";
 @Component({
   selector: 'app-form-user',
   templateUrl: './form-user.component.html',
-  styleUrls: ['./form-user.component.css']
+  styleUrls: ['./form-user.component.css', '../app.component.css']
 })
 export class FormUserComponent implements OnInit {
 

@@ -1,89 +1,93 @@
 <!--suppress ALL -->
-<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
-    <div class="p-fluid forms-grid" style="margin: 1em 0">
-    <div class="p-field">
-      <label for="nom">Nom</label>
-      <input id="nom" type="text" pInputText placeholder="nom" aria-describedby="nom-help" formControlName="nom">
-      <small *ngIf="nom.invalid && nom.touched"  id="nom-help" class="p-error">
-      <ng-container *ngIf="nom.errors?.required">
-        <app-error-message [message]="'Le nom est obligatoire'"></app-error-message>
-      </ng-container>
-      <ng-container *ngIf="nom.errors?.minlength">
-        <app-error-message [message]="'Le nom doit contenir au moins 2 caractères'"></app-error-message>
-      </ng-container>
-      <ng-container *ngIf="nom.errors?.maxlength">
-        <app-error-message [message]="'Le nom doit contenir au plus 100 caractères'"></app-error-message>
-      </ng-container>
-      </small>
-    </div>
-    <div class="p-field">
-      <label for="prenom">Prenom</label>
-      <input id="prenom" type="text" pInputText placeholder="prénom" aria-describedby="prenom-help" formControlName="prenom">
-      <small *ngIf="prenom.invalid && prenom.touched"  id="prenom-help" class="p-error">
-        <ng-container *ngIf="prenom.errors?.required">
-          <app-error-message [message]="'Le prénom est obligatoire'"></app-error-message>
-        </ng-container>
-        <ng-container *ngIf="prenom.errors?.minlength">
-          <app-error-message [message]="'Le prénom doit contenir au moins 2 caractères'"></app-error-message>
-        </ng-container>
-        <ng-container *ngIf="prenom.errors?.maxlength">
-          <app-error-message [message]="'Le prénom doit contenir au plus 100 caractères'"></app-error-message>
-        </ng-container>
-      </small>
-    </div>
-    <div class="p-field">
-      <label for="pseudo">Pseudo</label>
-      <input id="pseudo" type="text" pInputText placeholder="Pseudonyme" aria-describedby="pseudo-help" formControlName="pseudo" >
-      <small *ngIf="pseudo.invalid && pseudo.touched"  id="pseudo-help" class="p-error">
-      <ng-container *ngIf="pseudo.errors?.required">
-        <app-error-message [message]="'Le pseudo est obligatoire'"></app-error-message>
-      </ng-container>
-      <ng-container *ngIf="pseudo.errors?.minlength">
-        <app-error-message [message]="'Le pseudo doit contenir au moins 2 caractères'"></app-error-message>
-      </ng-container>
-      <ng-container *ngIf="pseudo.errors?.maxlength">
-        <app-error-message [message]="'Le pseudo doit contenir au plus 100 caractères'"></app-error-message>
-      </ng-container>
-      </small>
-    </div>
-    <div class="p-field">
-      <label for="email">Email</label>
-      <input id="email" type="text" pInputText placeholder="contact@domain.com" aria-describedby="email-help" formControlName="email">
-      <small *ngIf="email.invalid && (email.dirty || email.touched)"  id="email-help" class="p-error">
-        <ng-container *ngIf="email.errors?.required">
-          <app-error-message [message]="'L\'email est obligatoire'"></app-error-message>
-        </ng-container>
-        <ng-container *ngIf="email.errors?.email">
-          <app-error-message [message]="'Email Invalide'"></app-error-message>
-        </ng-container>
-      </small>
-    </div>
+<div class="black__background">
+  <h1 class="important__title">Inscription</h1>
+  <div class="form__centered">
 
-      <div formGroupName="pwd" *ngIf="user === undefined">
-    <div class="p-field">
-      <label for="password">Mot de passe</label>
-      <input type="password" id="password" placeholder="Mot de passe" class="form-control" formControlName="password">
-      <small *ngIf="password.invalid && password.touched" class="p-error">
-        <ng-container *ngIf="password.errors?.required">
-          <app-error-message [message]="'Le mot de passe est obligatoire'"></app-error-message>
-        </ng-container>
-        <ng-container *ngIf="password.errors?.pattern">
-          <app-error-message [message]="'Le mot de passe doit contenir au moins un caractère majuscule et un chiffre'"></app-error-message>
-        </ng-container>
-        <ng-container *ngIf="password.errors?.minlength">
-          <app-error-message [message]="'Le mot de passe doit contenir au moins 8 caractères'"></app-error-message>
-        </ng-container>
-      </small>
-    </div>
+  <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+      <div class="p-fluid forms-grid" style="margin: 1em 0">
       <div class="p-field">
-        <label for="confirmPassword">Confirmation du mot de passe</label>
-        <input type="password" id="confirmPassword" placeholder="Confirmation du mot de passe" class="form-control" formControlName="confirmPassword">
-        <small *ngIf="confirmPassword.invalid && confirmPassword.touched && password.touched && !password.invalid"  class="p-error">Vous devez confirmer votre mot passe</small>
+        <label for="nom">Nom</label>
+        <input class="input" id="nom" type="text" pInputText placeholder="Nom" aria-describedby="nom-help" formControlName="nom">
+        <small *ngIf="nom.invalid && nom.touched"  id="nom-help" class="p-error">
+        <ng-container *ngIf="nom.errors?.required">
+          <app-error-message [message]="'Le nom est obligatoire'"></app-error-message>
+        </ng-container>
+        <ng-container *ngIf="nom.errors?.minlength">
+          <app-error-message [message]="'Le nom doit contenir au moins 2 caractères'"></app-error-message>
+        </ng-container>
+        <ng-container *ngIf="nom.errors?.maxlength">
+          <app-error-message [message]="'Le nom doit contenir au plus 100 caractères'"></app-error-message>
+        </ng-container>
+        </small>
       </div>
-        <div *ngIf="pwd.invalid && pwd.touched && !confirmPassword.invalid">
-          <app-error-message [message]="'Les deux mots de passe ne sont pas identiques'"></app-error-message>
+      <div class="p-field">
+        <label for="prenom">Prenom</label>
+        <input class="input" id="prenom" type="text" pInputText placeholder="Prénom" aria-describedby="prenom-help" formControlName="prenom">
+        <small *ngIf="prenom.invalid && prenom.touched"  id="prenom-help" class="p-error">
+          <ng-container *ngIf="prenom.errors?.required">
+            <app-error-message [message]="'Le prénom est obligatoire'"></app-error-message>
+          </ng-container>
+          <ng-container *ngIf="prenom.errors?.minlength">
+            <app-error-message [message]="'Le prénom doit contenir au moins 2 caractères'"></app-error-message>
+          </ng-container>
+          <ng-container *ngIf="prenom.errors?.maxlength">
+            <app-error-message [message]="'Le prénom doit contenir au plus 100 caractères'"></app-error-message>
+          </ng-container>
+        </small>
+      </div>
+      <div class="p-field">
+        <label for="pseudo">Pseudo</label>
+        <input class="input" id="pseudo" type="text" pInputText placeholder="Pseudonyme" aria-describedby="pseudo-help" formControlName="pseudo" >
+        <small *ngIf="pseudo.invalid && pseudo.touched"  id="pseudo-help" class="p-error">
+        <ng-container *ngIf="pseudo.errors?.required">
+          <app-error-message [message]="'Le pseudo est obligatoire'"></app-error-message>
+        </ng-container>
+        <ng-container *ngIf="pseudo.errors?.minlength">
+          <app-error-message [message]="'Le pseudo doit contenir au moins 2 caractères'"></app-error-message>
+        </ng-container>
+        <ng-container *ngIf="pseudo.errors?.maxlength">
+          <app-error-message [message]="'Le pseudo doit contenir au plus 100 caractères'"></app-error-message>
+        </ng-container>
+        </small>
+      </div>
+      <div class="p-field">
+        <label for="email">Email</label>
+        <input class="input" id="email" type="text" pInputText placeholder="email@domaine.com" aria-describedby="email-help" formControlName="email">
+        <small *ngIf="email.invalid && (email.dirty || email.touched)"  id="email-help" class="p-error">
+          <ng-container *ngIf="email.errors?.required">
+            <app-error-message [message]="'L\'email est obligatoire'"></app-error-message>
+          </ng-container>
+          <ng-container *ngIf="email.errors?.email">
+            <app-error-message [message]="'Email Invalide'"></app-error-message>
+          </ng-container>
+        </small>
+      </div>
+
+        <div formGroupName="pwd" *ngIf="user === undefined">
+      <div class="p-field">
+        <label for="password">Mot de passe</label>
+        <input class="input" type="password" id="password" placeholder="Mot de passe" formControlName="password">
+        <small *ngIf="password.invalid && password.touched" class="p-error">
+          <ng-container *ngIf="password.errors?.required">
+            <app-error-message [message]="'Le mot de passe est obligatoire'"></app-error-message>
+          </ng-container>
+          <ng-container *ngIf="password.errors?.pattern">
+            <app-error-message [message]="'Le mot de passe doit contenir au moins un caractère majuscule et un chiffre'"></app-error-message>
+          </ng-container>
+          <ng-container *ngIf="password.errors?.minlength">
+            <app-error-message [message]="'Le mot de passe doit contenir au moins 8 caractères'"></app-error-message>
+          </ng-container>
+        </small>
+      </div>
+        <div class="p-field">
+          <label for="confirmPassword">Confirmation du mot de passe</label>
+          <input class="input" type="password" id="confirmPassword" placeholder="Mot de passe" formControlName="confirmPassword">
+          <small *ngIf="confirmPassword.invalid && confirmPassword.touched && password.touched && !password.invalid"  class="p-error">Vous devez confirmer votre mot passe</small>
         </div>
-      </div>
+          <div *ngIf="pwd.invalid && pwd.touched && !confirmPassword.invalid">
+            <app-error-message [message]="'Les deux mots de passe ne sont pas identiques'"></app-error-message>
+          </div>
+        </div>
       <div class="p-field">
         <label for="rgpd">Accepter les conditions d'utilisation</label>
         <input id="rgpd" type="checkbox" aria-describedby="rgpd-help" formControlName="rgpd">
@@ -94,9 +98,13 @@
         </small>
       </div>
 
-    <button pButton type="submit" >Submit</button>
+        <a class="button__link">
+          <button class="button__btn-big" type="submit" [disabled]="!formulaire.valid">S'enregistrer</button>
+        </a>  </div>
+  </form>
   </div>
-</form>
-  <ng-template pTemplate="footer">
-    Saisir les informations d'un utilisateur
-  </ng-template>
+</div>
+
+<ng-template pTemplate="footer">
+      Saisir les informations d'un utilisateur
+    </ng-template>
