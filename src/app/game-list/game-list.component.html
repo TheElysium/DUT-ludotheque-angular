@@ -23,13 +23,17 @@
         <option *ngFor="let theme of themes" value="{{theme.id}}">{{theme.nom}}</option>
       </select>
     </div>
+
     <button type="submit" label="Filtrer" [disabled]="!filterForm.valid">Filtrer</button>
   </form>
 </div>
 
 <div>
-  <button (click)="sort()">Sort</button>
-
+  <label for="tri">Trier</label>
+  <select id="tri" name="tri">
+    <option value="nom" (click)="sort('nom')">Nom</option>
+    <option value="note" (click)="sort('note')">Note</option>
+  </select>
 </div>
 
 <ul>

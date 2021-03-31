@@ -67,22 +67,23 @@ export class GameListComponent implements OnInit {
     this.getGameList(null, this.filterList);
   }
 
-  sort(): void{
-    console.log("Sorting ...");
-    if(this.sortState == 0){
-      console.log("BY nom ...");
-      this.getGameList("nom", this.filterList);
-    }
-    else if(this.sortState == 1){
-      console.log("BY rien ...");
-      this.getGameList(undefined, this.filterList);
-    }
-    else if(this.sortState == 2){
-      console.log("BY note ...");
-      this.getGameList("note", this.filterList);
-    }
-
-    if(++this.sortState>2) this.sortState = 0;
+  sort(sortBy: string): void{
+    // console.log("Sorting ...");
+    // if(this.sortState == 0){
+    //   console.log("BY nom ...");
+    //   this.getGameList("nom", this.filterList);
+    // }
+    // else if(this.sortState == 1){
+    //   console.log("BY rien ...");
+    //   this.getGameList(undefined, this.filterList);
+    // }
+    // else if(this.sortState == 2){
+    //   console.log("BY note ...");
+    //   this.getGameList("note", this.filterList);
+    // }
+    //
+    // if(++this.sortState>2) this.sortState = 0;
+    this.getGameList(sortBy,this.filterList);
   }
 
   get age(){
