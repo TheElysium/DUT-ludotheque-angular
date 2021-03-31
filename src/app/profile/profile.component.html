@@ -1,54 +1,70 @@
-<h3>Profil d'un utilisateur</h3>
-<br>
-<div *ngIf="!loading">
-  <h2>{{user.pseudo}}</h2>
-  <h3>{{user.prenom}} {{user.nom}}</h3>
-  <p>{{user.email}}</p>
-  <p>Crée : {{user.created_at | amDateFormat:'LL'}} </p>
-  <p>Modifié : {{user.updated_at | amDateFormat:'LL'}} </p>
+<div class="profile__container">
+  <div class="profile__section">
+    <h1 class="important__title">Profil utilisateur</h1>
+    <div class="user__profile">
+      <div *ngIf="!loading">
+        <img class="profile_image" src="assets/cowboy_white.png">
+        <h2>{{user.pseudo}}</h2>
+        <h3>{{user.prenom}} {{user.nom}}</h3>
+        <p>{{user.email}}</p>
+        <p>Crée : {{user.created_at | amDateFormat:'LL'}} </p>
+        <p>Modifié : {{user.updated_at | amDateFormat:'LL'}} </p>
 
-  <button [routerLink]="['/user/' + user.id + '/edit']">Modifier</button>
+        <a class="button__link">
+          <button class="button__btn-big" [routerLink]="['/user/' + user.id + '/edit']">Editer</button>
+        </a>
+      </div>
+    </div>
+  </div>
 
-  <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
-    <div>
-      Jeu :
-      <select type="game" name="game" formControlName="game">
-        <option *ngFor="let game of games" [value]="game.id">{{game.nom}}</option>
-      </select>
-      Date d'achat<input type="date" name="date" formControlName="date"><br>
-      <small *ngIf="date.invalid && date.touched"  id="date-help" class="p-error">
-      <ng-container *ngIf="date.errors?.required">
-        <app-error-message [message]="'Date requis !'"></app-error-message>
-      </ng-container>
-      <ng-container *ngIf="date.errors?.pattern">
-        <app-error-message [message]="'Mauvais format : dd/mm/yyyy !'"></app-error-message>
-      </ng-container>
-      </small>
 
-      Lieu de stockage <input type="storage" formControlName="storage"><br>
-        <small *ngIf="storage.invalid && storage.touched"  id="storage-help" class="p-error">
-      <ng-container *ngIf="storage.errors?.required">
-        <app-error-message [message]="'Lieu de stock requis'"></app-error-message>
-      </ng-container>
-        </small>
+  <div class="profile__section">
+    <h1 class="important__title">Ajouter un jeu</h1>
+    <div class="form__centered">
+      <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+        <div class="form__container">
+          Jeu :
+          <select type="game" name="game" formControlName="game">
+            <option *ngFor="let game of games" [value]="game.id">{{game.nom}}</option>
+          </select>
+          Date d'achat<input type="date" name="date" formControlName="date" class="input"><br>
+          <small *ngIf="date.invalid && date.touched"  id="date-help" class="p-error">
+            <ng-container *ngIf="date.errors?.required">
+              <app-error-message [message]="'Date requis !'"></app-error-message>
+            </ng-container>
+            <ng-container *ngIf="date.errors?.pattern">
+              <app-error-message [message]="'Mauvais format : dd/mm/yyyy !'"></app-error-message>
+            </ng-container>
+          </small>
 
-      Prix d'achat <input type="price" formControlName="price"><br>
+          Lieu de stockage <input type="storage" formControlName="storage" class="input"><br>
+          <small *ngIf="storage.invalid && storage.touched"  id="storage-help" class="p-error">
+            <ng-container *ngIf="storage.errors?.required">
+              <app-error-message [message]="'Lieu de stock requis'"></app-error-message>
+            </ng-container>
+          </small>
+
+          Prix d'achat <input type="price" formControlName="price" class="input"><br>
           <small *ngIf="price.invalid && price.touched"  id="price-help" class="p-error">
-      <ng-container *ngIf="price.errors?.required">
-        <app-error-message [message]="'Prix requis'"></app-error-message>
-      </ng-container>
+            <ng-container *ngIf="price.errors?.required">
+              <app-error-message [message]="'Prix requis'"></app-error-message>
+            </ng-container>
             <ng-container *ngIf="price.errors?.pattern">
               <app-error-message [message]="'Le prix doit être compris entre 1 et 250'"></app-error-message>
             </ng-container>
           </small>
+        </div>
+        <a class="button__link">
+          <button class="button__btn-big" type="submit" [disabled]="!formulaire.valid">Ajouter le jeu</button>
+        </a>
+      </form>
     </div>
-    <button [disabled]="!formulaire.valid">Valide</button>
-  </form>
-  <h2>Mon inventaire :</h2>
-  <ul>
-    <li *ngFor="let game of gameUser">
-      <app-game-card [game]="game.jeu"></app-game-card>
-    </li>
-  </ul>
-</div>
+  </div>
 
+  <div class="user__inventory">
+    <h2 class="important__title">Mon inventaire :</h2>
+    <div class="homepage__card-container-inner">
+      <app-game-card *ngFor="let game of gameUser" [game]="game"></app-game-card>
+    </div>
+  </div>
+</div>

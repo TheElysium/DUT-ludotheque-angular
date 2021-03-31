@@ -1,4 +1,4 @@
-<a [routerLink]="['/game/'+game.id]">
+<a *ngIf="this.game !== null" [routerLink]="['/game/'+game.id]">
   <div class="card"><div class="card__img-container">
     <div class="card__img" id="card__img"></div></div>
     <div class="card__info">
