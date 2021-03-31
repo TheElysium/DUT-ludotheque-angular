@@ -1,10 +1,21 @@
-<div>
-  <h3>Nom : {{game.nom}}</h3>
-  <h3>Photo : On en a pas mais l'intention est là</h3>
-  <h3>Thème : {{game.theme_id.nom}}</h3>
-  <h3>Durée : {{game.duree}}</h3>
-  <h3>Nombre de joueurs : {{game.nombre_joueurs}}</h3>
-  <h3>Âge : {{game.age}}</h3>
-
-  <a [routerLink]="['/game/'+game.id]">Détails</a>
-</div>
+<a [routerLink]="['/game/'+game.id]">
+  <div class="card"><div class="card__img-container">
+    <div class="card__img" id="card__img"></div></div>
+    <div class="card__info">
+      <div class="card__darker-area"></div>
+      <div class="card__info-label card__darker-area"><div>{{game.categorie}}</div></div>
+      <div class="card__values">
+        <li><div class="card__nbplayer-img card__values-img"></div>
+          <div>{{game.nombre_joueurs}}</div>
+        </li>
+        <li><div class="card__time-img card__values-img"></div>
+          <div>{{game.duree}}</div>
+        </li>
+        <li><div class="card__age-img card__values-img"></div>
+          <div>{{game.age}} ans</div>
+        </li>
+      </div>
+    </div>
+    <div class="card__title"><span>{{game.nom}}</span></div>
+  </div>
+</a>
