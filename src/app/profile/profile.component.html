@@ -49,5 +49,11 @@
       {{game.id}}
     </li>
   </ul>
+  <ul>
+    <li *ngFor="let game of gameUser">
+      <app-game-card [game]="game"></app-game-card>
+    </li>
+  </ul>
+  <h2>Mon inventaire :</h2>
 </div>
 

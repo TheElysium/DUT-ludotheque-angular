@@ -17,9 +17,6 @@ import {AuthentificationService} from "../_services/authentification.service";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  constructor(private authService: AuthentificationService, private http: HttpClient, private userService: UserService, private messageService: MessageService, private router: Router, private gameService: GameService) {
-    this.loading = false;
-  }
   static httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -42,9 +39,9 @@ export class ProfileComponent implements OnInit {
     date: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required, Validators.pattern('^\\b([1-9]|[1-9][0-9]|[1-2][0-4][1-9])$')])
   });
-  gameUser: Game[];
 
-  constructor(private userService: UserService, private messageService: MessageService, private router: Router, private gameService: GameService) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private authService: AuthentificationService, private http: HttpClient, private userService: UserService, private messageService: MessageService, private router: Router, private gameService: GameService) {
     this.loading = false;
   }
 
