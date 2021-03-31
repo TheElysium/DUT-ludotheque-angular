@@ -31,7 +31,7 @@ export class GameDetailsComponent implements OnInit {
     note: new FormControl(undefined, [Validators.required, Validators.min(0), Validators.max(5)]),
   })
 
-  constructor(public route: ActivatedRoute, public gameService: GameService, public messageService: MessageService, public commentaireService: CommentaireService, public datepipe: DatePipe
+  constructor(public route: ActivatedRoute, public gameService: GameService, public messageService: MessageService, public commentaireService: CommentaireService, public authService: AuthentificationService, public datepipe: DatePipe
   , public router: Router) {
 
   }
@@ -40,6 +40,28 @@ export class GameDetailsComponent implements OnInit {
     this.gameId = +this.route.snapshot.paramMap.get('id');
     this.loading = true;
     console.log('Requested game details id : ' + this.gameId);
+    this.getGameById();
+  }
+
+  onSubmit() {
+    let date = new Date();
+    let dateString = this.datepipe.transform(date, 'yyyy-dd-mm hh:mm:ss')
+    if (this.formulaire.valid) {
+      console.log("Submit comment...");
+      this.commentaireService.postComment(this.note.value, this.commentaire.value, this.gameId, dateString).subscribe(resp => console.log(resp));
+      this.getGameById();
+    }
+  }
+
+  get commentaire(){
+    return this.formulaire.get('commentaire');
+  }
+
+  get note(){
+    return this.formulaire.get('note');
+  }
+
+  getGameById(){
     this.gameService.getGameById(this.gameId).subscribe(
       game => {
         this.loading = true;
@@ -52,22 +74,5 @@ export class GameDetailsComponent implements OnInit {
         this.router.navigate(['/games']);
       }
     );
-  }
-
-  onSubmit() {
-    let date = new Date();
-    let dateString = this.datepipe.transform(date, 'yyyy-dd-mm hh:mm:ss')
-    if (this.formulaire.valid) {
-      console.log("Submit comment...");
-      this.commentaireService.postComment(this.note.value, this.commentaire.value, this.gameId, dateString).subscribe(resp => console.log(resp));
-    }
-  }
-
-  get commentaire(){
-    return this.formulaire.get('commentaire');
-  }
-
-  get note(){
-    return this.formulaire.get('note');
   }
 }
