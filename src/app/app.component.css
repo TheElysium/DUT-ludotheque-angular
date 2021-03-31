@@ -530,3 +530,15 @@ input.input::placeholder {
   }
 
 }
+
+.rgpd{
+  font-size:0.8rem;
+  text-wrap: normal;
+  margin: 0.5vw;
+}
+
+.checkbox-container{
+  display:flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+}

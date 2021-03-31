@@ -27,7 +27,7 @@ export class FormUserComponent implements OnInit {
       nom: new FormControl(undefined, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
       pseudo: new FormControl(undefined, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
       email: new FormControl(undefined, [Validators.required, Validators.email]),
-      rgpd: new FormControl(undefined, [Validators.required]),
+      rgpd: new FormControl(undefined, [Validators.required, Validators.requiredTrue]),
       pwd: new FormGroup({
         password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]),
         confirmPassword: new FormControl('', [Validators.required]),
@@ -106,6 +106,9 @@ export class FormUserComponent implements OnInit {
     return this.formulaire.get('pwd');
   }
 
+  get rgpd(): AbstractControl{
+    return this.formulaire.get('rgpd');
+  }
 
   titre: string;
 

@@ -88,16 +88,15 @@
             <app-error-message [message]="'Les deux mots de passe ne sont pas identiques'"></app-error-message>
           </div>
         </div>
-      <div class="p-field">
-        <label for="rgpd">Accepter les conditions d'utilisation</label>
+      <div class="p-field checkbox-container">
         <input id="rgpd" type="checkbox" aria-describedby="rgpd-help" formControlName="rgpd">
-        <small *ngIf="email.invalid && (email.dirty || email.touched)"  id="email-help" class="p-error">
-          <ng-container *ngIf="email.errors?.required">
-            <app-error-message [message]="'Veuillez accepter les conditions d\'utlisation'"></app-error-message>
-          </ng-container>
-        </small>
+        <label for="rgpd" class="rgpd">En soumettant ce formulaire, j'accepte que les informations saisies soient exploitées dans le cadre de l'utilisation du site web.</label>
       </div>
-
+      <div *ngIf="rgpd.invalid && (pwd.touched || confirmPassword.touched)">
+        <ng-container *ngIf="rgpd.errors?.required">
+          <app-error-message [message]="'Veuillez accepter l\'utilisation de vos données'"></app-error-message>
+        </ng-container>
+      </div>
         <a class="button__link">
           <button class="button__btn-big" type="submit" [disabled]="!formulaire.valid">S'enregistrer</button>
         </a>  </div>
